@@ -1,0 +1,12 @@
+<div class="text-center">
+  <h1>Liste des cours</h1>
+</div>
+<ul>
+  <% @courses.each do |course| %>
+    <li>
+      <%= link_to course do %>
+        <h2><%= course.title %></h2>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
