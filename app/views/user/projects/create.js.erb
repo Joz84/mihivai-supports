@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newProjectForm = document.getElementById('new_project');
+  newProjectForm.innerHTML = innerHTML;
+}
+
+function addProject(projectHTML) {
+  const projects = document.getElementById('projects');
+  projects.insertAdjacentHTML('beforeend', projectHTML);
+}
+
+<% if @project.errors.any? %>
+  refreshForm('<%= j render "form", project: @project, url: user_projects_path %>');
+<% else %>
+  addProject('<div><%= @project.url %></div>');
+  refreshForm('<%= j render "form", project: Project.new, url: user_projects_path %>');
+<% end %>

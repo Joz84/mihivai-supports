@@ -9,13 +9,15 @@ gem 'puma'
 gem 'rails', '5.1.5'
 gem 'redis'
 
+# gem 'jquery-rails'
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.3'
+gem 'bootstrap-sass'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+# gem 'cocoon'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
