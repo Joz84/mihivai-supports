@@ -1,19 +1,19 @@
-<%= simple_form_for project, url: url, remote: true  do |f| %>
+<%= simple_form_for project, url: url  do |f| %>
   <%= f.input :url %>
 
   <% @project.projects_users.each do |projects_user| %>
-    <%= f.fields_for :projects_users, projects_user do |task| %>
+    <%= f.fields_for :projects_users, projects_user do |pu| %>
       <p>
         User: <%= projects_user.user %>
-        <%= projects_user.check_box :_destroy %>
-        <%= projects_user.label :_destroy, "Remove User" %>
+        <%= pu.check_box :_destroy %>
+        <%= pu.label :_destroy, "Remove User" %>
       </p>
     <% end %>
   <% end %>
   <div id="projects-users">
     <%= f.simple_fields_for :project_users, ProjectsUser.new do |projects_user| %>
       <div class="links">
-        <%#= link_to_add_association 'add user', f, :projects_users %>
+        <%= link_to_add_association 'add user', f, :projects_users %>
       </div>
     <% end %>
   </div>

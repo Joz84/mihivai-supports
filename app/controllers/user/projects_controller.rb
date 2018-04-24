@@ -18,11 +18,19 @@ class User::ProjectsController < ApplicationController
     end
   end
 
-
-
+  def edit
+    @project = Project.find(params[:id])
+  end
 
   def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      redirect_to user_projects_path, notice: 'Porject mis à jour avec succès'
+    else
+      render :edit
+    end
   end
+
 
   def destroy
   end
@@ -34,7 +42,7 @@ class User::ProjectsController < ApplicationController
       :url,
       projects_users_attributes: [
         :id,
-        :user,
+        :user_id,
         :_destroy
       ]
     )

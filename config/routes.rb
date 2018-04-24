@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :courses, only: [ :index, :show ]
 
   namespace :user do
-    resources :projects, only: [:index, :create, :update, :destroy]
+    resources :projects, only: [:index, :create, :edit, :update, :destroy]
   end
 
 end

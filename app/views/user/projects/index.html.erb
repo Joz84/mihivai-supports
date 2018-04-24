@@ -1,8 +1,10 @@
 
-<div id="projects">
-  <% current_user.projects.each do |project| %>
-    <div><%= project.url %></div>
-  <% end %>
+<div class="container">
+  <div class="row" id="projects">
+    <% current_user.projects.each do |project| %>
+      <%= render "projects/project", object: project.metas, url:  edit_user_project_path(project) %>
+    <% end %>
+  </div>
 </div>
 
 <div id="new_rpoject">
