@@ -4,7 +4,7 @@
   <% @project.projects_users.each do |projects_user| %>
     <%= f.fields_for :projects_users, projects_user do |pu| %>
       <p>
-        User: <%= projects_user.user %>
+        User: <%= projects_user.user.full_name %>
         <%= pu.check_box :_destroy %>
         <%= pu.label :_destroy, "Remove User" %>
       </p>
@@ -17,7 +17,7 @@
       </div>
     <% end %>
   </div>
-  <%= f.submit 'Create Project' %>
+  <%= f.submit 'Soumettre' %>
 <% end %>
 
 

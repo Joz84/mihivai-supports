@@ -1,4 +1,6 @@
 class User::ProjectsController < ApplicationController
+  before_action :set_users
+
   def index
     @project = Project.new
   end
@@ -36,6 +38,10 @@ class User::ProjectsController < ApplicationController
   end
 
   private
+
+  def set_users
+    @users = User.where(promotion: current_user.promotion)
+  end
 
   def project_params
     params.require(:project).permit(
