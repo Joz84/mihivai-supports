@@ -1,0 +1,26 @@
+<%# if object %>
+  <%#= link_to url do %>
+<!--     <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="<%#= object.images.best %>" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%#= object.title %></h5>
+        <p class="card-text"><%#= object.description %></p>
+      </div>
+    </div> -->
+  <%# end %>
+<%# end %>
+<div class="col-md-4">
+    <%= link_to url do %>
+      <div class="thumbnail">
+        <% if object %>
+          <img src="<%= object.images.best %>" alt="">
+          <div class="caption">
+            <h3><%= object.title %></h3>
+            <p><%= object.description %></p>
+          </div>
+        <% else %>
+          <h3>Meta tag non valids</h3>
+        <% end %>
+      </div>
+    <% end %>
+</div>

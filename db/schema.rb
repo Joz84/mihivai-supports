@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319112143) do
+ActiveRecord::Schema.define(version: 20180421142618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,56 @@ ActiveRecord::Schema.define(version: 20180319112143) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "url"
+    t.float "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects_users", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_projects_users_on_project_id"
+    t.index ["user_id"], name: "index_projects_users_on_user_id"
+  end
+
+  create_table "promotions", force: :cascade do |t|
+    t.bigint "school_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_promotions_on_school_id"
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_courses", force: :cascade do |t|
+    t.string "position"
+    t.bigint "training_id"
+    t.bigint "course_id"
+    t.time "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_training_courses_on_course_id"
+    t.index ["training_id"], name: "index_training_courses_on_training_id"
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.bigint "promotion_id"
+    t.text "resume"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["promotion_id"], name: "index_trainings_on_promotion_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,8 +85,23 @@ ActiveRecord::Schema.define(version: 20180319112143) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "promotion_id"
+    t.string "group"
+    t.text "description"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "site"
+    t.string "linkedin"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["promotion_id"], name: "index_users_on_promotion_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "projects_users", "projects"
+  add_foreign_key "projects_users", "users"
+  add_foreign_key "promotions", "schools"
+  add_foreign_key "training_courses", "courses"
+  add_foreign_key "training_courses", "trainings"
+  add_foreign_key "trainings", "promotions"
+  add_foreign_key "users", "promotions"
 end
