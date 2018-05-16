@@ -1,5 +1,7 @@
 <div class="text-center">
   <h1><%= @course.title %></h1>
+  <p>
+    <%= link_to "PDF", @course.pdf, target: "_blank", class: "btn btn-primary" %>
+  </p>
   <iframe src="<%= @course.link %>" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  <%= link_to "lien vers le support", @course.link, class: "btn btn-primary" %>
 </div>
