@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180518223215) do
+ActiveRecord::Schema.define(version: 20180518224807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,23 @@ ActiveRecord::Schema.define(version: 20180518223215) do
     t.string "pdf"
     t.bigint "training_id"
     t.index ["training_id"], name: "index_courses_on_training_id"
+  end
+
+  create_table "landing_pages", force: :cascade do |t|
+    t.text "html"
+    t.text "css"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "landing_pages_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "landing_page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["landing_page_id"], name: "index_landing_pages_users_on_landing_page_id"
+    t.index ["user_id"], name: "index_landing_pages_users_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -97,6 +114,8 @@ ActiveRecord::Schema.define(version: 20180518223215) do
   end
 
   add_foreign_key "courses", "trainings"
+  add_foreign_key "landing_pages_users", "landing_pages"
+  add_foreign_key "landing_pages_users", "users"
   add_foreign_key "projects_users", "projects"
   add_foreign_key "projects_users", "users"
   add_foreign_key "promotions", "schools"
