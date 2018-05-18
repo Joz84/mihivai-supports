@@ -11,7 +11,8 @@ gem 'redis'
 
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
-gem 'bootstrap-sass', '~> 3.3'
+gem 'bootstrap', '~> 4.1.1'
+
 gem 'font-awesome-sass', '~> 5'
 gem 'sass-rails'
 gem 'simple_form'
