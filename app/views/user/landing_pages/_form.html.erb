@@ -1,0 +1,25 @@
+<%= simple_form_for landing_page, url: url  do |f| %>
+  <%= f.input :title %>
+  <%= f.input :html %>
+  <%= f.input :css %>
+
+  <% @landing_page.landing_pages_users.each do |landing_pages_user| %>
+    <%= f.fields_for :landing_pages_users, landing_pages_user do |pu| %>
+      <p>
+        User: <%= landing_pages_user.user.full_name %>
+        <%= pu.check_box :_destroy %>
+        <%= pu.label :_destroy, "Remove User" %>
+      </p>
+    <% end %>
+  <% end %>
+  <div id="landing_pages-users">
+    <%= f.simple_fields_for :landing_page_users, LandingPagesUser.new do |landing_pages_user| %>
+      <div class="links">
+        <%= link_to_add_association 'add user', f, :landing_pages_users %>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit 'Soumettre' %>
+<% end %>
+
+
