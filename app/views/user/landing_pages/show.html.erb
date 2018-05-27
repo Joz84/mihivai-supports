@@ -1,4 +1,6 @@
 <%= @landing_page.display( with_back_button: current_user.present? )
                  .html_safe %>
 
-
+<% @landing_page.images.each do |image| %>
+  <%= image_tag image %>
+<% end %>

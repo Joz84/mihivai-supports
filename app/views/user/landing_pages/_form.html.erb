@@ -3,6 +3,13 @@
   <%= f.input :html %>
   <%= f.input :css %>
 
+  <div id="upload-images">
+    <div class="upload_image">
+      <%= f.file_field :images, multiple: true, direct_upload: true %>
+    </div>
+  </div>
+
+
   <% @landing_page.landing_pages_users.each do |landing_pages_user| %>
     <%= f.fields_for :landing_pages_users, landing_pages_user do |pu| %>
       <p>
@@ -21,5 +28,6 @@
   </div>
   <%= f.submit 'Soumettre' %>
 <% end %>
+
 
 

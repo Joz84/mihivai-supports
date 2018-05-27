@@ -53,6 +53,7 @@ class User::LandingPagesController < ApplicationController
       :title,
       :html,
       :css,
+      images: [],
       landing_pages_users_attributes: [
         :id,
         :user_id,
