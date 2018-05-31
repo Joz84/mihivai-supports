@@ -10,7 +10,7 @@
       <i class="fab fa-html5 pr-2"></i>
       <%= f.label :html, "HTML *" %>
     </div>
-    <%= f.input :html, class:"form-control", :input_html => {:rows => 20}, placeholder:"<h1> Bonjour ! </h1>", label: false %>
+    <%= f.input :html, class:"form-control", :input_html => {:rows => 2}, placeholder:"<h1> Bonjour ! </h1>", label: false %>
   </div>
   <div class="form-group">
     <div class="d-flex align-items-baseline">
@@ -18,7 +18,7 @@
         <i class="fab fa-css3-alt pr-2"></i>
         <%= f.label :css, "CSS *"%>
     </div>
-    <%= f.input :css, class:"form-control", :input_html => {:rows => 20}, placeholder:"h1 { color : black ;}",label: false %>
+    <%= f.input :css, class:"form-control", :input_html => {:rows => 2}, placeholder:"h1 { color : black ;}",label: false %>
   </div>
 
   <div class="form-group">
@@ -29,37 +29,17 @@
     <%= f.file_field :images, multiple: true, direct_upload: true, class:"form-control-file btn btn-outline-light mb-2 w-50" %>
   </div>
 
-    <div id="landing_pages-users">
-      <div class="d-flex align-items-baseline">
-        <i class="fas fa-users pr-2"></i>
-        <p>Ajouter / Enlever des users</p>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <ul class="list-group list-group-flush" style="color:black !important; height:9rem; display:block; overflow:auto">
-          <%= f.input :landing_pages_users, collection: User.all.order(:first_name).map{ |user| [user.full_name, user.id] } , :as => :check_boxes, :wrapper_html => {class:"px-3 py-2 d-flex flex-column justify-content-center"},include_hidden: false, :input_html => {:multiple => true}, label: false %>
-        </ul>
-      </div>
+  <div id="landing_pages-users">
+    <div class="d-flex align-items-baseline">
+      <i class="fas fa-users pr-2"></i>
+      <p>Ajouter / Enlever des users</p>
     </div>
-
-  <!-- <% if params[:controller] == "user/landing_pages" && params[:action] == "edit" %>
-    <div class="form-group">
-      <h3>Users</h3><br>
-      <% @landing_page.landing_pages_users.each do |landing_pages_user| %>
-        <ul>
-          <%= f.fields_for :landing_pages_users, landing_pages_user do |pu| %>
-            <li>
-              <%= landing_pages_user.user.full_name %>
-              <%= pu.check_box :_destroy %>
-              <%= pu.label :_destroy, "Destroy", class:"badge badge-danger", style: "cursor-pointer" %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush" style="color:black !important; height:9rem; display:block; overflow:auto">
+        <%= f.association :users, collection: @users, :as => :check_boxes, :wrapper_html => {class:"px-3 py-2 d-flex flex-column justify-content-center"},include_hidden: false, :input_html => {:multiple => true}, label: false %>
+      </ul>
     </div>
-  <% end %> -->
-
-
-
+  </div>
 
   <div class="form-group w-100 text-center mt-4">
       <%= f.submit (params[:controller] == "user/landing_pages" && params[:action] == "edit") ? "Sauvegarder" : "Ajouter ma page", class:"btn btn-light btn-lg" %>
