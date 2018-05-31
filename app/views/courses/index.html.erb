@@ -1,12 +1,17 @@
-<div class="text-center">
-  <h1>Liste des cours</h1>
-</div>
-<ul>
-  <% @courses.each do |course| %>
-    <li>
-      <%= link_to course do %>
-        <h2><%= course.title %></h2>
+<div class="container text-center">
+  <h1 class="display-4 mt-5 mb-5">Liste des cours</h1>
+
+  <div class="mt-5 d-md-flex flex-wrap justify-content-center text-center align-item-center mx-auto">
+    <% @courses.each_with_index do |course, index| %>
+      <%= link_to course, class:"btn", style:"text-decoration:none" do %>
+        <div class="btn btn-light" style="width: 15rem;border:1px solid rgb(0,175,160)">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Cours n°<%= index + 1 %></h6>
+            <h2 class="card-title"><%= course.title %></h2>
+            <hr/>
+          </div>
+        </div>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    <% end %>
+  </div>
+</div>

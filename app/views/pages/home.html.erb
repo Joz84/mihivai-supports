@@ -1,10 +1,13 @@
-<div class="text-center">
+<div class="container d-md-flex justify-content-between text-center align-item-center flex-wrap flex-column" style="min-height:80vh">
 
-  <h1>Supports MihiVai</h1>
+  <h1 class="display-3 mt-5">Supports MihiVai</h1>
 
-  <h2><%= link_to "Mes supports de cours", courses_path %></h2>
-  <h2><%= link_to "Mes projets", user_projects_path %></h2>
-  <h2><%= link_to "Mes landing pages", user_landing_pages_path %></h2>
+  <div class="d-md-flex justify-content-between flex-wrap text-center align-item-center w-75 mx-auto pt-5 pb-5">
+    <h2 class="btn btn-lg btn-light" style="border:1px solid rgb(0,175,160)"><%= link_to "Mes supports de cours", courses_path, style:"text-decoration:none" %></h2>
+    <h2 class="btn btn-lg btn-light" style="border:1px solid rgb(0,175,160)"><%= link_to "Mes projets", user_projects_path, style:"text-decoration:none" %></h2>
+    <h2 class="btn btn-lg btn-light" style="border:1px solid rgb(0,175,160)"><%= link_to "Mes landing pages", user_landing_pages_path, style:"text-decoration:none" %></h2>
+  </div>
+
+  <h3> Bienvenue sur le support de cours de MihiVai ! </h3>
 
 </div>
-

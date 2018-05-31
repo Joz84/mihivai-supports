@@ -19,8 +19,8 @@ class LandingPage < ApplicationRecord
       split_html = new_html.split("</body>")
       head = split_html[0]
       body = split_html[1..-1].join
-      back_button = '<div style="text-align: center; font-family: arial; padding: 23px 0; position: fixed; bottom: 0px; left: 0px; width: 100%; border-top: 1px solid grey; background-color: white;" >
-                      <a href="/" style="text-decoration: none; color: #469AE0; font-size: 20px; font-weight: bold;">Revenir sur MihiVai</a>
+      back_button = '<div style="z-index:99999;text-align: center; font-family: arial; padding: 23px 0; position: fixed; bottom: 0px; left: 0px; width: 100%; border-top: 1px solid grey; background-color: white;" >
+                      <a href="/user/landing_pages/" style="text-decoration: none; color: rgb(0,175,160); font-size: 20px; font-weight: bold;">Revenir à mes pages</a>
                     </div>
                     <div style="height: 70px;"></div>'
       new_html = "#{head}#{back_button}</body>#{body}"

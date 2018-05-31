@@ -1,7 +1,5 @@
 <div class="text-center">
-  <h1><%= @course.title %></h1>
-  <p>
-    <%= link_to "PDF", @course.pdf, target: "_blank", class: "btn btn-primary" %>
-  </p>
-  <iframe src="<%= @course.link %>" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+  <h1 class="display-4 mt-5 mb-5"><%= @course.title %></h1>
+  <p><%= link_to "PDF", @course.pdf, target: "_blank", class: "btn btn-lg btn-light", style:"border:1px solid rgb(0,175,160)" %></p>
+  <iframe src="<%= @course.link %>" frameborder="0" width="800" height="460" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>

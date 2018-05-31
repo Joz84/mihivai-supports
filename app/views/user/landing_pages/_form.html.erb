@@ -1,33 +1,67 @@
+
 <%= simple_form_for landing_page, url: url  do |f| %>
-  <%= f.input :title %>
-  <%= f.input :html %>
-  <%= f.input :css %>
-
-  <div id="upload-images">
-    <div class="upload_image">
-      <%= f.file_field :images, multiple: true, direct_upload: true %>
+  <div class="form-group">
+    <%= f.label :title, "TITRE *" %>
+    <%= f.input :title, class:"form-control", placeholder:"Portfolio", label: false %>
+  </div>
+  <div class="form-group">
+    <div class="d-flex align-items-baseline">
+      <i class="far fa-file-code pr-2"></i>
+      <i class="fab fa-html5 pr-2"></i>
+      <%= f.label :html, "HTML *" %>
     </div>
+    <%= f.input :html, class:"form-control", :input_html => {:rows => 20}, placeholder:"<h1> Bonjour ! </h1>", label: false %>
+  </div>
+  <div class="form-group">
+    <div class="d-flex align-items-baseline">
+        <i class="far fa-file-code pr-2"></i>
+        <i class="fab fa-css3-alt pr-2"></i>
+        <%= f.label :css, "CSS *"%>
+    </div>
+    <%= f.input :css, class:"form-control", :input_html => {:rows => 20}, placeholder:"h1 { color : black ;}",label: false %>
   </div>
 
+  <div class="form-group">
+    <div class="d-flex align-items-baseline">
+      <i class="far fa-file pr-2"></i>
+      <label>Ajouter un fichier</label><br>
+    </div>
+    <%= f.file_field :images, multiple: true, direct_upload: true, class:"form-control-file btn btn-outline-light mb-2 w-50" %>
+  </div>
 
-  <% @landing_page.landing_pages_users.each do |landing_pages_user| %>
-    <%= f.fields_for :landing_pages_users, landing_pages_user do |pu| %>
-      <p>
-        User: <%= landing_pages_user.user.full_name %>
-        <%= pu.check_box :_destroy %>
-        <%= pu.label :_destroy, "Remove User" %>
-      </p>
-    <% end %>
-  <% end %>
-  <div id="landing_pages-users">
-    <%= f.simple_fields_for :landing_page_users, LandingPagesUser.new do |landing_pages_user| %>
-      <div class="links">
-        <%= link_to_add_association 'add user', f, :landing_pages_users %>
+    <div id="landing_pages-users">
+      <div class="d-flex align-items-baseline">
+        <i class="fas fa-users pr-2"></i>
+        <p>Ajouter / Enlever des users</p>
       </div>
-    <% end %>
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush" style="color:black !important; height:9rem; display:block; overflow:auto">
+          <%= f.input :landing_pages_users, collection: User.all.order(:first_name).map{ |user| [user.full_name, user.id] } , :as => :check_boxes, :wrapper_html => {class:"px-3 py-2 d-flex flex-column justify-content-center"},include_hidden: false, :input_html => {:multiple => true}, label: false %>
+        </ul>
+      </div>
+    </div>
+
+  <!-- <% if params[:controller] == "user/landing_pages" && params[:action] == "edit" %>
+    <div class="form-group">
+      <h3>Users</h3><br>
+      <% @landing_page.landing_pages_users.each do |landing_pages_user| %>
+        <ul>
+          <%= f.fields_for :landing_pages_users, landing_pages_user do |pu| %>
+            <li>
+              <%= landing_pages_user.user.full_name %>
+              <%= pu.check_box :_destroy %>
+              <%= pu.label :_destroy, "Destroy", class:"badge badge-danger", style: "cursor-pointer" %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %> -->
+
+
+
+
+  <div class="form-group w-100 text-center mt-4">
+      <%= f.submit (params[:controller] == "user/landing_pages" && params[:action] == "edit") ? "Sauvegarder" : "Ajouter ma page", class:"btn btn-light btn-lg" %>
   </div>
-  <%= f.submit 'Soumettre' %>
 <% end %>
-
-
-
