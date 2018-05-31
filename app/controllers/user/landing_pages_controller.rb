@@ -2,6 +2,7 @@ class User::LandingPagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_users, only: [:index, :edit]
   before_action :find_page, only: [:show, :edit, :update, :destroy]
+  before_action :all_users, only: [:index, :create]
 
   def index
     @landing_page = LandingPage.new
@@ -13,6 +14,8 @@ class User::LandingPagesController < ApplicationController
 
   def create
     @landing_page = current_user.landing_pages.new(landing_page_params)
+    @landing_page.users << current_user
+
     if @landing_page.save
       respond_to do |format|
         format.html { redirect_to user_landing_pages_path }
@@ -30,6 +33,7 @@ class User::LandingPagesController < ApplicationController
   end
 
   def update
+
     if @landing_page.update_attributes(landing_page_params)
       redirect_to user_landing_pages_path, notice: "La page a été mise à jour"
     else
@@ -49,21 +53,15 @@ class User::LandingPagesController < ApplicationController
     @users = User.where(promotion: current_user.promotion)
   end
 
+  def all_users
+    @users = User.all.order(:first_name).reject { |s| s.id == current_user.id }.map{ |user| [user.full_name, user.id] }
+  end
+
   def find_page
     @landing_page = LandingPage.find(params[:id])
   end
 
   def landing_page_params
-    params.require(:landing_page).permit(
-      :title,
-      :html,
-      :css,
-      images: [],
-      landing_pages_users_attributes: [
-        :id,
-        :user_id,
-        :_destroy
-      ]
-    )
+    params.require(:landing_page).permit(:title, :html, :css, images: [], user_ids: [])
   end
 end

@@ -11,7 +11,7 @@
           <%= render "landing_pages/landing_page", page: page %>
           <div class="d-flex flex-wrap justify-content-center align-item-center">
             <% page.users.each do |user| %>
-              <div class="mt-2 mb-3">
+              <div class="mt-2 mb-3 mx-3">
                 <%= user.first_name %>
               </div>
             <% end %>

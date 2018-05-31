@@ -8,11 +8,12 @@ class User < ApplicationRecord
          :trackable,
          :validatable
 
-  has_many :projects_users
-  has_many :landing_pages_users
-  has_many :projects,       through: :projects_users
-  has_many :landing_pages,  through: :landing_pages_users
+  has_and_belongs_to_many :landing_pages
+  has_and_belongs_to_many :projects
+
   belongs_to :promotion
+
+
 
   validates :promotion, presence: true
 
