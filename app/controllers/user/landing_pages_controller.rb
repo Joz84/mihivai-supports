@@ -2,7 +2,9 @@ class User::LandingPagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_users, only: [:index, :edit]
   before_action :find_page, only: [:show, :edit, :update, :destroy]
-  before_action :all_users, only: [:index, :create]
+  before_action :add_list_users, only: [:index, :create]
+  before_action :edit_list_users, only: [:edit]
+
 
   def index
     @landing_page = LandingPage.new
@@ -53,8 +55,12 @@ class User::LandingPagesController < ApplicationController
     @users = User.where(promotion: current_user.promotion)
   end
 
-  def all_users
+  def add_list_users
     @users = User.all.order(:first_name).reject { |s| s.id == current_user.id }.map{ |user| [user.full_name, user.id] }
+  end
+
+  def edit_list_users
+    @users = User.all.order(:first_name).map{ |user| [user.full_name, user.id] }
   end
 
   def find_page
