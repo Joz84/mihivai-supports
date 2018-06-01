@@ -9,9 +9,14 @@
     <%= link_to "Retour aux pages", user_landing_pages_path %>
   <% elsif params[:controller] == "pages" && params[:action] == "home"%>
     <p></p>
-  <% else %>
-    <%= link_to "Accueil", root_path %>
   <% end %>
+
+  <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
+    <%= link_to "Cours", courses_path, style:"font-weight:900; text-decoration:none" %>
+    <%= link_to "Projets", user_projects_path, style:"font-weight:900; text-decoration:none" %>
+    <%= link_to "Pages", user_landing_pages_path, style:"font-weight:900; text-decoration:none" %>
+  <% end %>
+
 
   <% if user_signed_in? %>
     <%= link_to t(".sign_out", default: "Log out"), destroy_user_session_path, method: :delete %>

@@ -19,7 +19,7 @@ class User::ProjectsController < ApplicationController
     else
       respond_to do |format|
         format.html { render :index }
-        format.js  { flash.now[:alert] = "Désolé le project n'a pu être créé"}
+        format.js  { flash.now[:alert] = "Désolé le projet n'a pu être créé"}
       end
     end
   end
@@ -31,7 +31,7 @@ class User::ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
-      redirect_to user_projects_path, notice: 'Porject mis à jour avec succès'
+      redirect_to user_projects_path, notice: 'Projet mis à jour avec succès'
     else
       render :edit
     end
