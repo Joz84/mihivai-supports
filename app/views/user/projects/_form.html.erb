@@ -1,21 +1,28 @@
 <%= simple_form_for project, url: url  do |f| %>
-  <%= f.input :url %>
+  <div class="w-75 mx-auto">
+    <h2 class="mt-2 mb-5 text-center" style="color:white;font-weight:900">Ajouter un projet</h1>
 
-  <% @project.projects_users.each do |projects_user| %>
-    <%= f.fields_for :projects_users, projects_user do |pu| %>
-      <p>
-        User: <%= projects_user.user.full_name %>
-        <%= pu.check_box :_destroy %>
-        <%= pu.label :_destroy, "Remove User" %>
-      </p>
-    <% end %>
-  <% end %>
-  <div id="projects-users">
-    <%= f.simple_fields_for :project_users, ProjectsUser.new do |projects_user| %>
-      <div class="links">
-        <%= link_to_add_association 'add user', f, :projects_users %>
+    <div class="d-flex w-100 justify-content-around">
+      <div class="form-group w-50">
+        <p> URL * </p>
+        <%= f.input :url, class:"form-control", placeholder: "http://mihivai-supports.herokuapp.com/", label: false %>
       </div>
-    <% end %>
+
+      <div id="projects-users">
+        <div class="d-flex align-items-baseline">
+          <i class="fas fa-users pr-2"></i>
+          <p>Ajouter / Enlever des users</p>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <ul class="list-group list-group-flush" style="color:black !important; height:9rem; display:block; overflow:auto">
+            <%= f.association :users, collection: @users, :as => :check_boxes, :wrapper_html => {class:"px-3 py-2 d-flex flex-column justify-content-center"},include_hidden: false, :input_html => {:multiple => true}, label: false %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group w-100 text-center mt-5">
+        <%= f.submit (params[:controller] == "user/projects" && params[:action] == "edit") ? "Sauvegarder" : "Soumettre", class:"btn btn-light btn-lg" %>
+    </div>
   </div>
-  <%= f.submit 'Soumettre' %>
 <% end %>

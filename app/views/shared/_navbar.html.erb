@@ -4,7 +4,7 @@
   <% if params[:controller] == 'courses' && params[:action] == 'show' %>
     <%= link_to "Retour aux cours", courses_path %>
   <% elsif params[:controller] == 'user/projects' && (params[:action] == 'edit' || params[:action] == 'show') %>
-    <%= link_to "Retour aux projets", courses_path %>
+    <%= link_to "Retour aux projets", user_projects_path %>
   <% elsif params[:controller] == 'user/landing_pages' && (params[:action] == 'edit' || params[:action] == 'show') %>
     <%= link_to "Retour aux pages", user_landing_pages_path %>
   <% elsif params[:controller] == "pages" && params[:action] == "home"%>

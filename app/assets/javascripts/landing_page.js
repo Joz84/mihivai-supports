@@ -1,7 +1,8 @@
 var sPath = window.location.pathname;
 var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
 
-if (sPage != "") {
+console.log(sPage);
+if (sPage == "landing_pages") {
   const new_page = document.getElementById("new_landing_page");
   const display = document.getElementById("display_landing_pages");
 

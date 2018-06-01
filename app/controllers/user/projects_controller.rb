@@ -1,5 +1,7 @@
 class User::ProjectsController < ApplicationController
   before_action :set_users
+  before_action :add_list_users, only: [:index, :create]
+  before_action :edit_list_users, only: [:edit]
 
   def index
     @project = Project.new
@@ -7,6 +9,8 @@ class User::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.users << current_user
+
     if @project.save
       respond_to do |format|
         format.html { redirect_to user_projects_path }
@@ -43,14 +47,15 @@ class User::ProjectsController < ApplicationController
     @users = User.where(promotion: current_user.promotion)
   end
 
+  def add_list_users
+    @users = User.all.order(:first_name).reject { |s| s.id == current_user.id }.map{ |user| [user.full_name, user.id] }
+  end
+
+  def edit_list_users
+    @users = User.all.order(:first_name).map{ |user| [user.full_name, user.id] }
+  end
+
   def project_params
-    params.require(:project).permit(
-      :url,
-      projects_users_attributes: [
-        :id,
-        :user_id,
-        :_destroy
-      ]
-    )
+    params.require(:project).permit(:url, user_ids: [])
   end
 end

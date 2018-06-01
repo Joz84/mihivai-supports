@@ -35,7 +35,6 @@ class User::LandingPagesController < ApplicationController
   end
 
   def update
-
     if @landing_page.update_attributes(landing_page_params)
       redirect_to user_landing_pages_path, notice: "La page a été mise à jour"
     else
