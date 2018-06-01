@@ -2,14 +2,12 @@
                  .html_safe %>
 <%= @landing_page.display(with_back_button: current_user.present?).html_safe %>
 
-<%= @landing_page.html.html_safe %>
-<%= @landing_page.css %>
-<script>
-  const myStyle = document.createElement("style");
-  myStyle.innerText = "<%= @landing_page.css.strip.safe_html %>";
-  console.log(myStyle);
-  document.head.append(myStyle);
-</script>
+  <script>
+    const myStyle = document.createElement("style");
+    myStyle.innerText = "<%= @landing_page.css.strip.html_safe %>";
+    console.log(myStyle);
+    document.head.append(myStyle);
+  </script>
 
 <% @landing_page.images.each do |image| %>
   <%= image_tag image %>
