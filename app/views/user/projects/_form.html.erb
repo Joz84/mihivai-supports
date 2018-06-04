@@ -4,7 +4,10 @@
 
     <div class="d-flex w-100 justify-content-around flex-wrap">
       <div class="form-group" style="min-width:350px">
-        <p> URL * </p>
+        <div class="d-flex align-items-baseline">
+          <i class="fas fa-link pr-2"></i>
+          <p> URL * </p>
+        </div>
         <%= f.input :url, class:"form-control", placeholder: "http://mihivai-supports.herokuapp.com/", label: false %>
       </div>
 

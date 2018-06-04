@@ -14,21 +14,20 @@
 <div class="rounded mx-3" style="width: 20rem;border:1px solid rgb(0,175,160)">
   <div class="card-body">
     <% if object %>
-      <h6 class="card-subtitle mb-2 text-muted">Détails du projet :</h6>
-      <img class="my-2" style="max-width:6rem" src="<%= object.images.best %>" alt="">
-      <h4 class="card-title mt-4"><%= link_to "Accéder a mon projet", object.url %></h4>
-      <div class="caption">
-        <h5><%= object.title %></h5>
-      </div>
-      <hr/>
-      <div class="d-flex justify-content-around w-100">
-        <h6 class="card-subtitle mb-2 text-muted">
-          <%= link_to url do %>
-            Modifier
-            <i class="fas fa-pen-square"></i>
-          <% end %>
-        </h6>
-      </div>
+      <%= link_to object.url do %>
+        <h6 class="card-subtitle mb-2 text-muted">Détails du projet :</h6>
+        <img class="my-2" style="max-width:6rem" src="<%= object.images.best %>" alt="">
+        <h5 class="pt-3 align-items-start"><%= object.title %></h5>
+        <hr/>
+        <div class="d-flex justify-content-center w-100 mx-auto">
+          <h6 class="card-subtitle my-1 text-muted">
+            <%= link_to url do %>
+              Modifier
+              <i class="fas fa-pen-square"></i>
+            <% end %>
+          </h6>
+        </div>
+      <% end %>
     <% else %>
       <h3>Meta tag non valids</h3>
     <% end %>
