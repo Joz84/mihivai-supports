@@ -1,23 +1,34 @@
 <div class="w-100 d-md-flex justify-content-between text-center align-item-center flex-wrap flex-column" style="min-height:80vh">
+  <div class="circle"></div>
 
   <div class="home-container">
     <div class="color gradient"></div>
     <h1 class="container display-3 mt-5 mb-1">Supports MihiVai</h1>
     <div class="d-flex w-75 flex-column justify-content-start mx-auto">
       <p class="my-5"><span> Tous les cours, projets et vos réalisations disponibles sur ce support </span></p>
-      <%= link_to "Je crée mon compte", new_user_registration_path, class:"home-btn mt-5 mx-auto w-50", id:"create-account" %>
     </div>
   </div>
 
   <div class="home-container">
-    <div class="color"></div>
-    <p class="mt-5 mb-4"> Dans cet onglet il y a tous les cours auxquels vous avez et allait assister. </p>
-    <%= image_tag "book.svg", class:"icon" %>
-    <h2 class="home-btn mx-auto my-3"><%= link_to "Accéder a mes supports", courses_path, style:"text-decoration:none" %></h2>
-
+    <div class="color memphis"></div>
+    <!-- <p class="mt-5 mb-4"> Dans cet onglet il y a tous les cours auxquels vous avez et allait assister. </p> -->
+    <div class="d-flex justify-content-center align-content-center flex-wrap">
+      <div class="d-flex flex-column align-items-center mx-4">
+        <h2 class="home-btn mx-auto my-3"><%= link_to "Accéder a mes supports", courses_path, style:"text-decoration:none" %></h2>
+        <%= image_tag "book.svg", class:"icon" %>
+      </div>
+      <div class="d-flex flex-column align-items-center mx-4">
+        <h2 class="home-btn mx-auto my-3"><%= link_to "Accéder a mes projets", user_projects_path, style:"text-decoration:none" %></h2>
+        <%= image_tag "project-diagram.svg", class:"icon" %>
+      </div>
+      <div class="d-flex flex-column align-items-center mx-4">
+        <h2 class="home-btn mx-auto my-3"><%= link_to "Accéder a mes pages", user_landing_pages_path, style:"text-decoration:none" %></h2>
+        <%= image_tag "file.svg", class:"icon" %>
+      </div>
+    </div>
   </div>
 
-  <div class="home-container">
+  <!-- <div class="home-container">
     <div class="color light"></div>
     <p class="mt-5 mb-4"> Ici, ce sont les projets réalisés en ligne auxquels vous pouvez accéder via leur url. </p>
     <%= image_tag "project-diagram.svg", class:"icon" %>
@@ -29,6 +40,19 @@
     <p class="mt-5 mb-4"> Ce sont là toutes les pages statiques que vous avez faites, vous pouvez aussi les visualiser. </p>
     <%= image_tag "file.svg", class:"icon" %>
     <h2 class="home-btn mx-auto my-3"><%= link_to "Accéder a mes pages", user_landing_pages_path, style:"text-decoration:none" %></h2>
-
-  </div>
+    <div id="background-wrap">
+      <div class="x1">
+          <div class="cloud"></div>
+      </div>
+      <div class="x2">
+          <div class="cloud"></div>
+      </div>
+      <div class="x3">
+          <div class="cloud"></div>
+      </div>
+      <div class="x4">
+          <div class="cloud"></div>
+      </div>
+    </div>
+  </div> -->
 </div>
