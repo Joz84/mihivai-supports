@@ -55,7 +55,7 @@ class User::LandingPagesController < ApplicationController
   end
 
   def add_list_users
-    @users = User.all.order(:first_name).reject { |s| s.id == current_user.id }.map{ |user| [user.full_name, user.id] }
+    @users = User.where("id != :id", id: current_user.id).order(:first_name).map{ |user| [user.full_name, user.id] }
   end
 
   def edit_list_users

@@ -1,0 +1,27 @@
+
+.big-btn, .small-btn {
+  cursor: pointer;
+  border-radius:8px;
+  background-color: white;
+  box-shadow: 4px 4px 4px -1px #74C7BE;
+  color:#74C7BE;
+  padding:25px 40px;
+  font-size: 25px;
+  width:fit-content;
+  text-decoration: none;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  &:hover {
+    // box-shadow: 7px 7px 4px -3px #74C7BE;
+    // color:rgba(#74C7BE,0.8);
+    transform:translateY(-4px);
+  }
+}
+
+.small-btn {
+  box-shadow: 4px 4px 4px -1px rgba(#157F74,0.5);
+  color:rgba(#157F74,0.8);
+  padding:15px 30px;
+  font-size: 20px;
+}

@@ -1,0 +1,25 @@
+
+.color {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: skewY(-8deg);
+  transform-origin: 0;
+  z-index: -999;
+}
+
+.memphis {
+  background: url('memphis.jpg');
+  background-repeat:repeat;
+  background-size:500px;
+  opacity:0.05;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #74C7BE, #ABE4DE);
+}
+
+.light {
+  background:rgba(#ABE4DE,0.7);
+}
