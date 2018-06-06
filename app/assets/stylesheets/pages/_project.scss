@@ -1,0 +1,18 @@
+.project-list-container {
+  width:65%;
+  overflow:auto;
+  display:block;
+}
+
+.project-form-container {
+  width:30%;
+  background:#74C7BE;
+  color:white !important;
+  box-shadow:4px 4px 20px -1px rgba(0,0,0,0.2);
+}
+
+.card-project {
+  width: 20rem;
+  min-height:18rem;
+  background:white;
+}

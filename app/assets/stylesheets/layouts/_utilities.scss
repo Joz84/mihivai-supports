@@ -6,6 +6,19 @@ a, a:hover, a:visited {
   color:#49A69C;
 }
 
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.main-layout {
+  position:fixed;
+  height:91vh;
+  width:100vw;
+  bottom:100px;
+  z-index:-9999;
+  opacity:0.8
+}
+
 #navbar {
   height:9vh;
   background-color: $light-gray;
