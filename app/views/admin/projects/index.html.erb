@@ -1,0 +1,27 @@
+<h1>Admin::Projects#index</h1>
+
+<%= simple_form_for :search, url: admin_projects_path, method: :get do |f| %>
+  <%= f.input :promotion_id, collection: Promotion.all %>
+  <%= f.button :submit %>
+<% end %>
+
+<ol>
+  <% @projects.each do |project| %>
+    <li id="project-<%= project.id %>">
+      <h2><%= link_to "project", project.url, target: :blank %></h2>
+      <div class="rating"><%= project.rating %></div>
+      <%= simple_form_for project, url: admin_project_path(project), remote: true do |f| %>
+
+        <%= f.input :rating, label: false %>
+        <%= f.button :submit, "modifier" %>
+      <% end %>
+
+      <ul>
+        <% project.users.each do |user| %>
+          <li><%= user.full_name %></li>
+        <% end %>
+      </ul>
+      <hr>
+    </li>
+  <% end %> %>
+</ol>
