@@ -2,9 +2,11 @@
                  .html_safe %>
 
 <%= @landing_page.html.html_safe %>
+<%= @landing_page.css.strip %>
 <script>
   const myStyle = document.createElement("style");
-  myStyle.innerText = "<%= @landing_page.css.strip.html_safe %>";
+  const coco = <%= @landing_page.css.strip %>;
+  myStyle.innerText = coco.trim();
   document.head.append(myStyle);
 </script>
 
