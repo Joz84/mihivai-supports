@@ -2,15 +2,14 @@
                  .html_safe %>
 
 <%= @landing_page.html.html_safe %>
-<%= @landing_page.css %>
 <script>
   const myStyle = document.createElement("style");
-  myStyle.innerText = "<%= @landing_page.css.strip.safe_html %>";
-  console.log(myStyle);
+  myStyle.innerText = "<%= @landing_page.css.strip.html_safe %>";
   document.head.append(myStyle);
 </script>
 
 <% @landing_page.images.each do |image| %>
   <%= image_tag image %>
 <% end %>
+
 
