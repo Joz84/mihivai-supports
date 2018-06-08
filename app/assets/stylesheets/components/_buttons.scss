@@ -11,7 +11,7 @@
   cursor: pointer;
   border-radius:3px;
   background-color: white;
-  box-shadow: 4px 4px 4px -1px #74C7BE;
+  box-shadow: 4px 4px 4px -1px rgba(#157F74,0.5);
   color:#74C7BE;
   padding:25px 40px;
   font-size: 25px;
@@ -20,13 +20,11 @@
 }
 
 .small-btn {
-  box-shadow: 4px 4px 4px -1px rgba(#157F74,0.5);
   color:rgba(#157F74,0.8);
   padding:15px 30px;
   font-size: 20px;
 }
 
 .normal-btn {
-  box-shadow: 4px 4px 4px -1px rgba(#157F74,0.5);
   color:rgba(#157F74,0.8);
 }

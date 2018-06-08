@@ -10,6 +10,14 @@ a, a:hover, a:visited {
   text-decoration: none;
 }
 
+.display-none {
+  display:none;
+}
+
+.icon {
+  color:rgba(#2E9086,0.8);
+}
+
 .main-layout {
   position:fixed;
   height:91vh;
