@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 2018_05_20_100943) do
     t.string "last_name"
     t.string "site"
     t.string "linkedin"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["promotion_id"], name: "index_users_on_promotion_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
