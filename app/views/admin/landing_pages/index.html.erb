@@ -6,17 +6,17 @@
 <% end %>
 
 <ol>
-  <% @landing_pages.each do |lp| %>
-    <li id="landing-pages-<%= lp.id %>">
-      <h2><%= lp.title %></h2>
-      <div class="rating"><%= lp.rating %></div>
-      <%= simple_form_for lp, url: admin_landing_page_path(lp), remote: true do |f| %>
+  <% @landing_pages.each do |landing_page| %>
+    <li id="landing-pages-<%= landing_page.id %>">
+      <h2><%= landing_page.title %></h2>
+      <div class="rating"><%= landing_page.rating %></div>
+      <%= simple_form_for landing_page, url: admin_landing_page_path(lp), remote: true do |f| %>
         <%= f.input :rating, label: false %>
         <%= f.button :submit, "modifier" %>
       <% end %>
 
       <ul>
-        <% lp.users.each do |user| %>
+        <% landing_page.users.each do |user| %>
           <li><%= user.full_name %></li>
         <% end %>
       </ul>
