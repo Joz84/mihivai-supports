@@ -42,7 +42,7 @@ class User::LandingPagesController < ApplicationController
 
   def destroy
     @landing_page.delete
-    flash[:notice] = "La page a bien été supprimé"
+    flash[:notice] = "La page a bien été supprimée"
     redirect_to user_landing_pages_path
   end
 
