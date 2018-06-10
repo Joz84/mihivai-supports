@@ -16,7 +16,6 @@ class User::LandingPagesController < ApplicationController
 
   def create
     @landing_page = current_user.landing_pages.new(landing_page_params)
-    @landing_page.users << current_user
 
     if @landing_page.save
       respond_to do |format|
