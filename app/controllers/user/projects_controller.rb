@@ -8,9 +8,7 @@ class User::ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.users << current_user
-
+    @project = current_user.projects.new(project_params)
     if @project.save
       respond_to do |format|
         format.html { redirect_to user_projects_path }
