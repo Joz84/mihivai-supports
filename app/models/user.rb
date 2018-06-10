@@ -10,10 +10,7 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :landing_pages
   has_and_belongs_to_many :projects
-
   belongs_to :promotion
-
-
 
   validates :promotion, presence: true
 

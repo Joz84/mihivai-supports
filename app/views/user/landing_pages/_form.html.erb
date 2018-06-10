@@ -1,4 +1,3 @@
-
 <%= simple_form_for landing_page, url: url  do |f| %>
   <div class="form-group">
     <%= f.label :title, "TITRE *" %>
@@ -43,6 +42,13 @@
 
   <div class="form-group w-100 text-center mt-4">
       <%= f.submit (params[:controller] == "user/landing_pages" && params[:action] == "edit") ? "Sauvegarder" : "Ajouter ma page", class:"small-btn" %>
+  </div>
+
+
+  <div id="upload-images">
+    <div class="upload_image">
+      <%= f.file_field :images, multiple: true, direct_upload: true %>
+    </div>
   </div>
 
 <% end %>

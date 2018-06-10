@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_06_07_001350) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rating"
   end
 
   create_table "landing_pages_users", force: :cascade do |t|

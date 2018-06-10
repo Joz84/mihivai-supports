@@ -1,14 +1,8 @@
-<%#= @landing_page.display( with_back_button: current_user.present? )
-                 .html_safe %>
-<%= @landing_page.display(with_back_button: current_user.present?).html_safe %>
-
-  <script>
-    const myStyle = document.createElement("style");
-    myStyle.innerText = "<%= @landing_page.css.strip.html_safe %>";
-    console.log(myStyle);
-    document.head.append(myStyle);
-  </script>
-
-<% @landing_page.images.each do |image| %>
-  <%= image_tag image %>
-<% end %>
+<%= @landing_page.html_with_images.html_safe %>
+<script>
+  const myStyle = document.createElement("style");
+  myStyle.innerText = `<%= @landing_page.css_with_images %>`;
+  document.head.append(myStyle);
+  document.body.insertAdjacentHTML("beforeend", `<%= render "footer" %>`);
+  document.querySelector('[href="style.css"]').remove();
+</script>

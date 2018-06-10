@@ -5,7 +5,6 @@ class User::LandingPagesController < ApplicationController
   before_action :add_list_users, only: [:index, :create]
   before_action :edit_list_users, only: [:edit]
 
-
   def index
     @landing_page = LandingPage.new
   end
