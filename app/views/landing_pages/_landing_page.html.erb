@@ -1,3 +1,16 @@
-<%= link_to page.title, user_landing_page_path(page), target: :blank %>
-<%= link_to "Modifier", edit_user_landing_page_path(page) %>
-<hr>
+<div class="rounded mx-3 page-card normal-btn">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">Visiter cette page :</h6>
+    <h2 class="card-title"><%= link_to page.title, user_landing_page_path(page), target: :blank %></h2>
+    <hr/>
+    <div class="d-flex justify-content-around w-100">
+      <h6 class="card-subtitle mb-2 text-muted">
+        <%= link_to edit_user_landing_page_path(page) do %>
+          Modifier
+          <i class="fas fa-pen-square"></i>
+        <% end %>
+      </h6>
+
+    </div>
+  </div>
+</div>

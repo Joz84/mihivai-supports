@@ -1,27 +1,69 @@
-<h1>Admin::Projects#index</h1>
+<div class="d-flex flex-wrap flex-column">
 
-<%= simple_form_for :search, url: admin_projects_path, method: :get do |f| %>
-  <%= f.input :promotion_id, collection: Promotion.all %>
-  <%= f.button :submit %>
-<% end %>
+  <div class="container-fluid p-4 m-4 rounded project-form-container w-75 mx-auto">
+    <h1 class="display-4 my-4 text-center" style="color:white">Projets</h1>
 
-<ol>
-  <% @projects.each do |project| %>
-    <li id="project-<%= project.id %>">
-      <h2><%= link_to "project", project.url, target: :blank %></h2>
-      <div class="rating"><%= project.rating %></div>
-      <%= simple_form_for project, url: admin_project_path(project), remote: true do |f| %>
+    <%= simple_form_for :search, url: admin_projects_path, method: :get do |f| %>
+      <%= f.input :promotion_id, collection: Promotion.all %>
+      <%= f.button :submit, class:"text-center normal-btn"%>
+    <% end %>
+  </div>
 
-        <%= f.input :rating, label: false %>
-        <%= f.button :submit, "modifier" %>
+  <div class="container-fluid text-center project-list-container" id="display_project">
+    <div class="mt-5 d-md-flex flex-wrap justify-content-center text-center align-item-center mx-auto flex-column">
+      <% @projects.each do |project| %>
+        <div class="d-flex flex-wrap">
+          <div class="rounded mx-3 card-project normal-btn">
+            <div class="card-body d-flex justify-content-around flex-column" style="min-height:18rem;">
+              <% if project.metas %>
+                <%= link_to project.url, target: "_blank" do %>
+                  <h6 class="card-subtitle mb-2 text-muted">Détails du projet :</h6>
+                  <img class="my-2" style="height:4rem" src="<%= project.metas.images.best %>" alt="">
+                  <h5 class="pt-3 align-items-start"><%= project.metas.title %></h5>
+                  <hr/>
+                <% end %>
+              <% else %>
+                <h3>Meta tag non valides</h3>
+              <% end %>
+              <div class="d-flex justify-content-center w-100 mx-auto">
+                <h6 class="card-subtitle my-1 text-muted">
+                  <div id="project-<%= project.id %>-rating">Actual rating : <%= project.rating %></div>
+                  <%= simple_form_for project, url: admin_project_path(project), remote: true do |f| %>
+                    <div class="d-flex align-items-center justify-content-center mt-2">
+                      <div class="display-none" id="edit-field-<%= project.id %>" style="height:2.3em">
+                        <%= f.input :rating, label: false %>
+                      </div>
+                      <i class="fas fa-pen-square fa-2x icon ml-2" id="edit-btn-<%= project.id %>" onclick="displayForm(<%= project.id %>)"></i>
+                    </div>
+
+                    <div class="display-none">
+                      <%= f.button :submit %>
+                    </div>
+                  <% end %>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap justify-content-center align-item-center flex-column mx-auto mt-2" style="width:20rem">
+            <% project.users.each do |user| %>
+              <div class="mt-2 mb-3 mx-3 d-flex align-items-center">
+                <div class="bubble">
+                  <%= user.first_name[0] %><%= user.last_name[0] %>
+                </div>
+                <%= user.first_name %> <%= user.last_name %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <hr class="separate">
       <% end %>
+    </div>
+  </div>
+</div>
 
-      <ul>
-        <% project.users.each do |user| %>
-          <li><%= user.full_name %></li>
-        <% end %>
-      </ul>
-      <hr>
-    </li>
-  <% end %>
-</ol>
+<script type="text/javascript">
+  function displayForm(el){
+    document.getElementById("edit-field-"+el).classList.toggle("display-none");
+  }
+</script>
+

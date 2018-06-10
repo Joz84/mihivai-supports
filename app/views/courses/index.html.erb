@@ -1,12 +1,16 @@
-<div class="text-center">
-  <h1>Liste des cours</h1>
+
+<div class="container text-center">
+  <h1 class="display-4 mt-5 mb-5" style="color:white">Liste des cours</h1>
+
+  <div class="mt-5 d-flex flex-wrap justify-content-start mx-auto">
+    <% @courses.each_with_index do |course, index| %>
+      <div class="p-3 big-btn" style="width:20rem;margin:1em">
+        <%= link_to course, style:"text-decoration:none;" do %>
+          <h6 class="mb-2 text-muted">Cours n°<%= index + 1 %></h6>
+          <h2><%= course.title %></h2>
+          <hr/>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-<ul>
-  <% @courses.each do |course| %>
-    <li>
-      <%= link_to course do %>
-        <h2><%= course.title %></h2>
-      <% end %>
-    </li>
-  <% end %>
-</ul>

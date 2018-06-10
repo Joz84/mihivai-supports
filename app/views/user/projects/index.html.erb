@@ -1,14 +1,23 @@
 
-<div class="container">
-  <div class="row" id="projects">
-    <% current_user.projects.each do |project| %>
-      <%= render "projects/project", object: project.metas, url:  edit_user_project_path(project) %>
-    <% end %>
+<div class="d-flex flex-wrap">
+  <div class="container-fluid text-center project-list-container" id="display_project">
+    <h1 class="display-4 mt-5 mb-5" style="color:white">Mes projets</h1>
+    <div class="mt-5 d-md-flex flex-wrap justify-content-center text-center align-item-center mx-auto">
+      <% current_user.projects.each do |project| %>
+        <div class="d-flex justify-content-center flex-column">
+          <%= render "projects/project", object: project.metas, url:  edit_user_project_path(project) %>
+          <div class="d-flex flex-wrap justify-content-center align-item-center">
+            <% project.users.each do |user| %>
+              <div class="mt-2 mb-3 mx-3">
+                <%= user.first_name %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container-fluid p-3 m-4 rounded project-form-container" id="new_project">
+    <%= render "form", project: @project, url: user_projects_path %>
   </div>
 </div>
-
-<div id="new_project">
-  <%= render "form", project: @project, url: user_projects_path %>
-</div>
-
-

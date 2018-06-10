@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :projects, only: [:index, :update]
+    resources :landing_pages, only: [:index, :update]
   end
 
   devise_for :users

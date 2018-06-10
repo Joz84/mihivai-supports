@@ -1,13 +1,15 @@
 class User::LandingPagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_users, only: [:index, :edit]
+  before_action :find_page, only: [:show, :edit, :update, :destroy]
+  before_action :add_list_users, only: [:index, :create]
+  before_action :edit_list_users, only: [:edit]
 
   def index
     @landing_page = LandingPage.new
   end
 
   def show
-    @landing_page = LandingPage.find(params[:id])
     render :layout => false
   end
 
@@ -27,19 +29,20 @@ class User::LandingPagesController < ApplicationController
   end
 
   def edit
-    @landing_page = LandingPage.find(params[:id])
   end
 
   def update
-    @landing_page = LandingPage.find(params[:id])
     if @landing_page.update_attributes(landing_page_params)
-      redirect_to user_landing_page_path(@landing_page), notice: 'Porject mis à jour avec succès'
+      redirect_to user_landing_pages_path, notice: "La page a été mise à jour"
     else
       render :edit
     end
   end
 
   def destroy
+    @landing_page.delete
+    flash[:notice] = "La page a bien été supprimée"
+    redirect_to user_landing_pages_path
   end
 
   private
@@ -48,19 +51,19 @@ class User::LandingPagesController < ApplicationController
     @users = User.where(promotion: current_user.promotion)
   end
 
+  def add_list_users
+    @users = User.where("id != :id", id: current_user.id).order(:first_name).map{ |user| [user.full_name, user.id] }
+  end
+
+  def edit_list_users
+    @users = User.all.order(:first_name).map{ |user| [user.full_name, user.id] }
+  end
+
+  def find_page
+    @landing_page = LandingPage.find(params[:id])
+  end
+
   def landing_page_params
-    params.require(:landing_page).permit(
-      :title,
-      :html,
-      :css,
-      images: [],
-      landing_pages_users_attributes: [
-        :id,
-        :user_id,
-        :_destroy
-      ]
-    )
+    params.require(:landing_page).permit(:title, :html, :css, images: [], user_ids: [])
   end
 end
-
-

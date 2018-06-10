@@ -1,0 +1,49 @@
+h1, h2, h3, h4, h5, h6, p, a, span {
+  font-family: "Source-sans-pro", sans-serif !important;
+}
+
+a, a:hover, a:visited {
+  color:#49A69C;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.display-none {
+  display:none;
+}
+
+.icon {
+  color:rgba(#2E9086,0.8);
+}
+
+.main-layout {
+  position:fixed;
+  height:91vh;
+  width:100vw;
+  bottom:100px;
+  z-index:-9999;
+  opacity:0.8
+}
+
+#navbar {
+  height:9vh;
+  background-color: $light-gray;
+}
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: $light-gray;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #74C7BE;
+}
