@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'bootsnap', require: false
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
-gem 'rails', '5.1.5'
+gem 'rails', '5.2'
 gem 'redis'
 
 gem 'jquery-rails'
@@ -20,6 +21,9 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cocoon'
 gem 'metainspector'
+
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

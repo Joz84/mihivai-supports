@@ -1,0 +1,10 @@
+<%= @landing_page.html_with_images.html_safe %>
+<script>
+  const myStyle = document.createElement("style");
+  myStyle.innerText = `<%= @landing_page.css_with_images %>`;
+  document.head.append(myStyle);
+  document.body.insertAdjacentHTML("beforeend", `<%= render "footer" %>`);
+  document.querySelector('[href="style.css"]').remove();
+</script>
+
+

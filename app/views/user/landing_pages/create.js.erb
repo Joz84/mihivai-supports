@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newLandingPageForm = document.getElementById('new_landing_page');
+  newLandingPageForm.innerHTML = innerHTML;
+}
+
+function addLandingPage(landingPageHTML) {
+  const landing_pages = document.getElementById('landing_pages');
+  landing_pages.insertAdjacentHTML('beforeend', landingPageHTML);
+}
+
+<% if @landing_page.errors.any? %>
+  refreshForm('<%= j render "form", landing_page: @landing_page, url: user_landing_pages_path %>');
+<% else %>
+  addLandingPage('<%= j render "landing_pages/landing_page", page: @landing_page %>');
+  refreshForm('<%= j render "form", landing_page: LandingPage.new, url: user_landing_pages_path %>');
+<% end %>

@@ -1,0 +1,13 @@
+
+<div class="container">
+  <div class="row" id="landing_pages">
+    <% current_user.landing_pages.each do |page| %>
+      <%= render "landing_pages/landing_page", page: page %>
+    <% end %>
+  </div>
+</div>
+
+<div id="new_landing_page">
+  <%= render "form", landing_page: @landing_page, url: user_landing_pages_path %>
+</div>
+
