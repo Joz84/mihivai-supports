@@ -1,11 +1,10 @@
 class LandingPage < ApplicationRecord
-  has_many :landing_pages_users, inverse_of: :landing_page
-  has_many :users, through: :landing_pages_users
-
+  has_and_belongs_to_many :users, dependent: :delete
   has_many_attached :images
 
   validates :html, :title, presence: true
   validates :title, uniqueness: true
+
   accepts_nested_attributes_for :landing_pages_users,
                                 reject_if: proc { |attributes| attributes[:user_id].blank? },
                                 allow_destroy: true

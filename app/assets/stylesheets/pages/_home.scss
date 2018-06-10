@@ -1,1 +1,40 @@
 // Specific CSS for your home-page
+
+.home-container{
+  width:100%;
+  min-height: 58.5vh;
+  max-height: 70vh;
+  position: relative;
+
+  h1 {
+    color:white;
+    font-weight: 900;
+  }
+  h2 {
+    color: #157F74;
+  }
+  h3 {
+    color: #74C7BE;
+    text-shadow: 4px 4px 0px white;
+  }
+
+  p {
+    font-weight: lighter;
+    font-size: 1.3em;
+    color:#157F74;
+
+    span {
+      color:#2E9086;
+      font-size: 1.4em;
+    }
+  }
+
+  .bar {
+    background-color: rgba(#2E9086,0.4);
+    height:0.8px;
+    width:40vw;
+    margin: 30px auto;
+  }
+
+
+}

@@ -1,8 +1,22 @@
-<div class="d-flex justify-content-between align-items-center px-4 py-2 border-bottom">
+<div id="navbar" class="d-flex justify-content-between align-items-center px-4 py-2 border-bottom">
   <%= link_to (image_tag "logo.png", height: 50), root_path %>
-  <% if user_signed_in? %>
-    <%= link_to t(".sign_out", default: "Log out"), destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path %>
+
+  <% if params[:controller] == 'courses' && params[:action] == 'show' %>
+    <%= link_to "Retour aux cours", courses_path %>
+  <% elsif params[:controller] == 'user/projects' && (params[:action] == 'edit' || params[:action] == 'show') %>
+    <%= link_to "Retour aux projets", user_projects_path %>
+  <% elsif params[:controller] == 'user/landing_pages' && (params[:action] == 'edit' || params[:action] == 'show') %>
+    <%= link_to "Retour aux pages", user_landing_pages_path %>
+  <% elsif params[:controller] == "pages" && params[:action] == "home"%>
   <% end %>
+
+  <% if user_signed_in? %>
+    <%= link_to t(".sign_out", default: "Déconnexion"), destroy_user_session_path, method: :delete  %>
+  <% else %>
+    <div class="d-flex justify-content-around m-0">
+      <%= link_to t(".sign_up", default: "Créer mon compte"), new_user_registration_path, class:"mx-3"  %>
+      <%= link_to t(".sign_in", default: "Me connecter"), new_user_session_path, class:"mx-3"  %>
+    </div>
+  <% end %>
+
 </div>

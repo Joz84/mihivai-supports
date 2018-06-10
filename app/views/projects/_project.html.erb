@@ -9,18 +9,27 @@
     </div> -->
   <%# end %>
 <%# end %>
-<div class="col-md-4">
-    <%= link_to url do %>
-      <div class="thumbnail">
-        <% if object %>
-          <img src="<%= object.images.best %>" alt="">
-          <div class="caption">
-            <h3><%= object.title %></h3>
-            <p><%= object.description %></p>
-          </div>
-        <% else %>
-          <h3>Meta tag non valids</h3>
-        <% end %>
-      </div>
+
+
+<div class="rounded mx-3 card-project normal-btn">
+  <div class="card-body d-flex justify-content-around flex-column" style="min-height:18rem">
+    <% if object %>
+      <%= link_to object.url, target: "_blank" do %>
+        <h6 class="card-subtitle mb-2 text-muted">Détails du projet :</h6>
+        <img class="my-2" style="height:4rem" src="<%= object.images.best %>" alt="">
+        <h5 class="pt-3 align-items-start"><%= object.title %></h5>
+        <hr/>
+      <% end %>
+    <% else %>
+      <h3>Meta tag non valides</h3>
     <% end %>
+    <div class="d-flex justify-content-center w-100 mx-auto">
+      <h6 class="card-subtitle my-1 text-muted">
+        <%= link_to url do %>
+          Modifier
+          <i class="fas fa-pen-square"></i>
+        <% end %>
+      </h6>
+    </div>
+  </div>
 </div>

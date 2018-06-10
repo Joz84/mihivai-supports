@@ -1,0 +1,30 @@
+.big-btn, .normal-btn, .small-btn {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  &:hover {
+    transform:translateY(-4px);
+  }
+}
+
+.big-btn, .small-btn, .home-btn {
+  cursor: pointer;
+  border-radius:3px;
+  background-color: white;
+  box-shadow: 4px 4px 4px -1px rgba(#157F74,0.5);
+  color:#74C7BE;
+  padding:25px 40px;
+  font-size: 25px;
+  width:fit-content;
+  text-decoration: none;
+}
+
+.small-btn {
+  color:rgba(#157F74,0.8);
+  padding:15px 30px;
+  font-size: 20px;
+}
+
+.normal-btn {
+  color:rgba(#157F74,0.8);
+}

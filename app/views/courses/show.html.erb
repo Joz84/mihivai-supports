@@ -1,7 +1,6 @@
-<div class="text-center">
-  <h1><%= @course.title %></h1>
-  <p>
-    <%= link_to "PDF", @course.pdf, target: "_blank", class: "btn btn-primary" %>
-  </p>
-  <iframe src="<%= @course.link %>" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<div class="d-flex flex-column w-75 text-center mx-auto justify-content-center">
+  <h1 class="display-4 my-4" style="color:white"><%= @course.title %></h1>
+  <%= link_to "PDF", @course.pdf, target: "_blank", class: "small-btn text-center mx-auto my-3" %>
+  <iframe src="<%= @course.link %>" frameborder="0" width="800" height="460" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" class="mx-auto"></iframe>
 </div>

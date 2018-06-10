@@ -1,0 +1,27 @@
+.circle {
+  width:15px;
+  height:15px;
+  position: fixed;
+  right:30px;
+  top:15vh;
+  border-radius: 50px;
+  border:2px solid $light-gray;
+  background-color: #157F74;
+  animation: move 2s infinite alternate ease-in-out;
+  opacity: 0.4;
+}
+
+@keyframes move {
+  0%{
+    transform: translateY(0);
+  }
+  40%{
+    height:100px;
+  }
+  90%{
+    height:20px;
+  }
+  100%{
+    transform: translateY(70vh);
+  }
+}
