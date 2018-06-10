@@ -12,7 +12,7 @@ class Admin::LandingPagesController < ApplicationController
 
   def update
     @landing_page = LandingPage.find(params[:id])
-    if @landing_page.update(lp_params)
+    if @landing_page.update(landing_page_params)
       respond_to do |format|
         format.html { redirect_to admin_projects_path}
         format.js
@@ -26,7 +26,7 @@ class Admin::LandingPagesController < ApplicationController
     params.require(:search).permit(:promotion_id)
   end
 
-  def lp_params
+  def landing_page_params
     params.require(:landing_page).permit(:rating)
   end
 end
