@@ -1,0 +1,26 @@
+<h1>Admin::LandingPages#index</h1>
+
+<%= simple_form_for :search, url: admin_landing_pages_path, method: :get do |f| %>
+  <%= f.input :promotion_id, collection: Promotion.all %>
+  <%= f.button :submit %>
+<% end %>
+
+<ol>
+  <% @landing_pages.each do |landing_page| %>
+    <li id="landing-pages-<%= landing_page.id %>">
+      <h2><%= landing_page.title %></h2>
+      <div class="rating"><%= landing_page.rating %></div>
+      <%= simple_form_for landing_page, url: admin_landing_page_path(lp), remote: true do |f| %>
+        <%= f.input :rating, label: false %>
+        <%= f.button :submit, "modifier" %>
+      <% end %>
+
+      <ul>
+        <% landing_page.users.each do |user| %>
+          <li><%= user.full_name %></li>
+        <% end %>
+      </ul>
+      <hr>
+    </li>
+  <% end %>
+</ol>
