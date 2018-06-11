@@ -9,6 +9,7 @@ class User::ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
+    @project.users << current_user
     if @project.save
       respond_to do |format|
         format.html { redirect_to user_projects_path }
@@ -46,11 +47,11 @@ class User::ProjectsController < ApplicationController
   end
 
   def add_list_users
-    @users = User.where("id != :id", id: current_user.id).order(:first_name).map{ |user| [user.full_name, user.id] }
+    @users = User.where("id != :id", id: current_user.id).order(:first_name).map{ |user| [user.name, user.id] }
   end
 
   def edit_list_users
-    @users = User.all.order(:first_name).map{ |user| [user.full_name, user.id] }
+    @users = User.all.order(:first_name).map{ |user| [user.name, user.id] }
   end
 
   def project_params

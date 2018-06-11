@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :promotion, presence: true
 
-  def full_name
+  def name
     return email if first_name.nil? || last_name.nil?
     "#{first_name.capitalize} #{last_name.capitalize}"
   end

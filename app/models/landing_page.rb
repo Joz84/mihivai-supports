@@ -5,9 +5,9 @@ class LandingPage < ApplicationRecord
   validates :html, :title, presence: true
   validates :title, uniqueness: true
 
-  accepts_nested_attributes_for :landing_pages_users,
-                                reject_if: proc { |attributes| attributes[:user_id].blank? },
-                                allow_destroy: true
+  # accepts_nested_attributes_for :landing_pages_users,
+  #                               reject_if: proc { |attributes| attributes[:user_id].blank? },
+  #                               allow_destroy: true
 
   def html_with_images
     with_images(html)
