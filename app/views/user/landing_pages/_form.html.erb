@@ -1,4 +1,4 @@
-<%= simple_form_for landing_page, url: url  do |f| %>
+<%= simple_form_for landing_page, url: url, remote: true  do |f| %>
   <div class="form-group">
     <%= f.label :title, "TITRE *" %>
     <%= f.input :title, class:"form-control", placeholder:"Portfolio", label: false %>
@@ -25,7 +25,11 @@
       <i class="fas fa-file-image pr-2"></i>
       <label>Ajouter un fichier</label><br>
     </div>
-    <%= f.file_field :images, multiple: true, direct_upload: true, class:"form-control-file btn btn-outline-light mb-2 w-50" %>
+    <div id="upload-images">
+      <div class="upload_image">
+        <%= f.file_field :images, multiple: true, direct_upload: true, class:"form-control-file btn btn-outline-light mb-2 w-50" %>
+      </div>
+    </div>
   </div>
 
   <div id="landing_pages-users">
@@ -43,12 +47,4 @@
   <div class="form-group w-100 text-center mt-4">
       <%= f.submit (params[:controller] == "user/landing_pages" && params[:action] == "edit") ? "Sauvegarder" : "Ajouter ma page", class:"small-btn" %>
   </div>
-
-
-  <div id="upload-images">
-    <div class="upload_image">
-      <%= f.file_field :images, multiple: true, direct_upload: true %>
-    </div>
-  </div>
-
 <% end %>
