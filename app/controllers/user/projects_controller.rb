@@ -47,11 +47,11 @@ class User::ProjectsController < ApplicationController
   end
 
   def add_list_users
-    @users = User.where("id != :id", id: current_user.id).order(:first_name).map{ |user| [user.name, user.id] }
+    @users = User.where("id != :id", id: current_user.id).order(:first_name)
   end
 
   def edit_list_users
-    @users = User.all.order(:first_name).map{ |user| [user.name, user.id] }
+    @users = User.all.order(:first_name)
   end
 
   def project_params
