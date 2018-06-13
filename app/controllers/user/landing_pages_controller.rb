@@ -15,6 +15,7 @@ class User::LandingPagesController < ApplicationController
 
   def create
     @landing_page = current_user.landing_pages.new(landing_page_params)
+    @landing_page.users << current_user
     if @landing_page.save
       respond_to do |format|
         format.html { redirect_to user_landing_pages_path }
@@ -52,11 +53,11 @@ class User::LandingPagesController < ApplicationController
   end
 
   def add_list_users
-    @users = User.where("id != :id", id: current_user.id).order(:first_name).map{ |user| [user.full_name, user.id] }
+    @users = User.where.not(id: current_user.id).order(:first_name)
   end
 
   def edit_list_users
-    @users = User.all.order(:first_name).map{ |user| [user.full_name, user.id] }
+    @users = User.all.order(:first_name)
   end
 
   def find_page

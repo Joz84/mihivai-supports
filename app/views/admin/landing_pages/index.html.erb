@@ -19,9 +19,9 @@
               <h6 class="card-subtitle mb-2 text-muted">Voir la page :</h6>
               <h5 class="pt-3 align-items-start"><%= link_to landing_page.title, user_landing_page_path(landing_page), target: :blank %></h5>
               <h2>__________</h2>
-              <div class="d-flex justify-content-center w-100 mx-auto">
+              <div class="d-flex justify-content-center w-100 mx-auto" id="landing-pages-<%= landing_page.id %>">
                 <h6 class="card-subtitle my-1 text-muted">
-                <div id="landing_page-<%= landing_page.id %>-rating">
+                <div class="rating">
                   Actual rating : <%= landing_page.rating %>
                 </div>
                 <%= simple_form_for landing_page, url: admin_landing_page_path(landing_page), remote: true do |f| %>

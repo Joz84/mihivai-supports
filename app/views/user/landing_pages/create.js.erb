@@ -14,3 +14,6 @@ function addLandingPage(landingPageHTML) {
   addLandingPage('<%= j render "landing_pages/landing_page", page: @landing_page %>');
   refreshForm('<%= j render "form", landing_page: LandingPage.new, url: user_landing_pages_path %>');
 <% end %>
+
+uploadImages();
+

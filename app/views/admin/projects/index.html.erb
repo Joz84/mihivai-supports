@@ -25,7 +25,7 @@
               <% else %>
                 <h3>Meta tag non valides</h3>
               <% end %>
-              <div class="d-flex justify-content-center w-100 mx-auto" id="project-<%= project.id %>-rating">
+              <div class="d-flex justify-content-center w-100 mx-auto" id="project-<%= project.id %>">
                 <h6 class="card-subtitle my-1 text-muted">
                   <div class="rating">Actual rating : <%= project.rating %></div>
                   <%= simple_form_for project, url: admin_project_path(project), remote: true do |f| %>

@@ -1,4 +1,4 @@
-<%= simple_form_for landing_page, url: url  do |f| %>
+<%= simple_form_for landing_page, url: url, remote: true  do |f| %>
   <div class="form-group">
     <%= f.label :title, "TITRE *" %>
     <%= f.input :title, class:"form-control", placeholder:"Portfolio", label: false %>
@@ -47,8 +47,4 @@
   <div class="form-group w-100 text-center mt-4">
       <%= f.submit (params[:controller] == "user/landing_pages" && params[:action] == "edit") ? "Sauvegarder" : "Ajouter ma page", class:"small-btn" %>
   </div>
-
-
-
-
 <% end %>
