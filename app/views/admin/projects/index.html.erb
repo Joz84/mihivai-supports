@@ -20,14 +20,14 @@
                   <h6 class="card-subtitle mb-2 text-muted">Détails du projet :</h6>
                   <img class="my-2" style="height:4rem" src="<%= project.metas.images.best %>" alt="">
                   <h5 class="pt-3 align-items-start"><%= project.metas.title %></h5>
-                  <hr/>
+                  <h2>__________</h2>
                 <% end %>
               <% else %>
                 <h3>Meta tag non valides</h3>
               <% end %>
-              <div class="d-flex justify-content-center w-100 mx-auto">
+              <div class="d-flex justify-content-center w-100 mx-auto" id="project-<%= project.id %>-rating">
                 <h6 class="card-subtitle my-1 text-muted">
-                  <div id="project-<%= project.id %>-rating">Actual rating : <%= project.rating %></div>
+                  <div class="rating">Actual rating : <%= project.rating %></div>
                   <%= simple_form_for project, url: admin_project_path(project), remote: true do |f| %>
                     <div class="d-flex align-items-center justify-content-center mt-2">
                       <div class="display-none" id="edit-field-<%= project.id %>" style="height:2.3em">
@@ -66,4 +66,3 @@
     document.getElementById("edit-field-"+el).classList.toggle("display-none");
   }
 </script>
-
