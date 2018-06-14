@@ -1,2 +1,3 @@
-var rating = document.querySelector('#project-<%= @project.id %> > .rating');
-rating.innerText = <%= @project.rating %>;
+var rating = document.querySelector('#project-<%= @project.id %> .rating');
+
+rating.innerText = 'Actual rating : ' + <%= @project.rating %>;
