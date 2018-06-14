@@ -1,41 +1,42 @@
 <%= simple_form_for landing_page, url: url, remote: true  do |f| %>
   <div class="form-group">
     <%= f.label :title, "TITRE *" %>
-    <%= f.input :title, class:"form-control", placeholder:"Portfolio", label: false %>
+    <%= f.input :title, class:"form-control", placeholder:"Ex: Portfolio", label: false %>
   </div>
   <div class="form-group">
     <div class="d-flex align-items-baseline">
       <i class="far fa-file-code pr-2"></i>
       <i class="fab fa-html5 pr-2"></i>
-      <%= f.label :html, "HTML *" %>
+      <%= f.label :html, "Fichier index.html *" %>
     </div>
-    <%= f.input :html, class:"form-control", :input_html => {:rows => 20}, placeholder:"<h1> Bonjour ! </h1>", label: false %>
+    <%= f.input :html, class:"form-control", :input_html => {:rows => 20}, placeholder:"Ex: <h1> Bonjour ! </h1>", label: false %>
   </div>
   <div class="form-group">
     <div class="d-flex align-items-baseline">
         <i class="far fa-file-code pr-2"></i>
         <i class="fab fa-css3-alt pr-2"></i>
-        <%= f.label :css, "CSS"%>
+        <%= f.label :css, "Fichier style.css"%>
     </div>
-    <%= f.input :css, class:"form-control", :input_html => {:rows => 20}, placeholder:"h1 { color : black ;}",label: false %>
+    <%= f.input :css, class:"form-control", :input_html => {:rows => 20}, placeholder:"Ex: h1 { color : black ;}",label: false %>
   </div>
 
   <div class="form-group">
+    <div class="d-flex align-items-baseline">
+      <i class="fas fa-file-image pr-2"></i>
+      <label>Ajouter des images</label><br>
+    </div>
     <div id="upload-images">
-      <div class="d-flex align-items-baseline">
-        <i class="fas fa-file-image pr-2"></i>
-        <label>Ajouter un/des fichier(s) placé(s) dans le dossier : images/mes_images.png</label><br>
-      </div>
-      <div class="upload_image">
-        <%= f.file_field :images, multiple: true, direct_upload: true, class:"form-control-file btn btn-outline-light mb-2 w-50" %>
-      </div>
+      <label class="small-btn upload_image">
+        Ajouter une image
+        <%= f.file_field :images, multiple: true, direct_upload: true %>
+      </label>
     </div>
   </div>
 
   <div id="landing_pages-users">
     <div class="d-flex align-items-baseline">
       <i class="fas fa-users pr-2"></i>
-      <p>Ajouter / Enlever des users</p>
+      <p>Ajouter / Enlever des collaborateurs</p>
     </div>
     <div class="card" style="width: 18rem;">
       <ul class="list-group list-group-flush" style="color:black !important; height:9rem; display:block; overflow:auto">
