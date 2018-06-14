@@ -1,0 +1,17 @@
+.upload_image {
+  display: flex;
+  justify-content: left;
+  i {
+    background-color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 50%;
+    color: #87C5BE;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  input {
+    display: none;
+  }
+}
