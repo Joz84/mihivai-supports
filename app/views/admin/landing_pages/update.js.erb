@@ -1,2 +1,2 @@
-var rating = document.querySelector('#landing-pages-<%= @landing_page.id %> > .rating');
-rating.innerText = <%= @landing_page.rating %>;
+var rating = document.querySelector('#landing-pages-<%= @landing_page.id %> .rating');
+rating.innerText = "Actual rating : "+<%= @landing_page.rating %>;
