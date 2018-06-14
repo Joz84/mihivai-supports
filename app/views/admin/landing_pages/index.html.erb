@@ -44,9 +44,9 @@
             <% landing_page.users.each do |user| %>
               <div class="mt-2 mb-3 mx-3 d-flex align-items-center">
                 <div class="bubble">
-                  <%= user.first_name[0] %><%= user.last_name[0] %>
+                  <%= user.initials %>
                 </div>
-                <%= user.first_name %> <%= user.last_name %>
+                <%= user.name %>
               </div>
             <% end %>
           </div>
