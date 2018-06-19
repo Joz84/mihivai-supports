@@ -5,7 +5,6 @@ const uploadImages = () => {
   const upload_file = (image) => {
     const input = image.querySelector("input");
     input.addEventListener("change", (event) => {
-      image.innerHTML = "";
       image.classList.remove("small-btn");
       Array.from(event.currentTarget.files).forEach((file) => {
         image.insertAdjacentHTML("beforeend", `<div>${file.name}</div>`);
