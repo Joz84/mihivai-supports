@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def initials
-    return email.chr.upcase if first_name.nil? || last_name.nil?
+    return "#{email.chr.upcase}@" if first_name.nil? || last_name.nil?
     "#{first_name.chr.upcase} #{last_name.chr.upcase}"
   end
 
