@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @survey.title %><br><br>
+  <h4> ATTENTION : à la fin du timer, le QCM se validera automatiquement ! </h4>
+
+  <% unless current_user.admin? %>
+    <div class="timer"></div>
+  <% end %>
+  <%= simple_form_for @survey, :url => survey_match_path, method: :post do |f| %>
+    <% @survey.questions.each do |question| %>
+      <i>Question : <%= question.title %></i><br>
+        <% answers = question.answers %>
+        <div style="display:flex;margin:1em 3em">
+          <%= collection_check_boxes(:response, question.id, answers, :id, :title) do |b| %>
+            <div style="display:flex;">
+              <%=  b.label { b.check_box } %><%= b.text %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <br><br>
+      <%= f.submit 'Go to your result' %>
+  <% end %>
+
+  <%= javascript_tag "getValues(#{@survey.timer},#{@survey.id})" %>
+  <%= javascript_tag "startTimer()" %>
+</p>

@@ -1,0 +1,5 @@
+<%= render "surveys/index", surveys: @surveys %>
+
+<% if current_user.admin?%>
+  <%= link_to 'New survey', new_admin_survey_path %>
+<% end %>

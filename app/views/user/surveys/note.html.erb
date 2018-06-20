@@ -1,0 +1,10 @@
+
+<% @surveys.each do |survey| %>
+  <% unless survey.questions.empty? && !current_user.admin? %>
+    <% x = matchAnswers(current_user, survey)%>
+    <% y = survey.questions.count %>
+
+    <p>QCM : <i><%= survey.title %></i>, <%= "#{x} / #{y}"%> bonnes réponses.</p>
+    <p> Ta note finale est de : <b><%= getNote(x,y) %>/20.0</b> pour ce QCM.</p>
+  <% end %>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_08_093658) do
+ActiveRecord::Schema.define(version: 2018_06_20_101129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,22 @@ ActiveRecord::Schema.define(version: 2018_06_08_093658) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.string "title"
+    t.boolean "right"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "answers_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "answer_id"
+    t.index ["answer_id"], name: "index_answers_users_on_answer_id"
+    t.index ["user_id"], name: "index_answers_users_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -97,8 +113,23 @@ ActiveRecord::Schema.define(version: 2018_06_08_093658) do
     t.index ["training_id"], name: "index_promotions_trainings_on_training_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.bigint "survey_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_questions_on_survey_id"
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string "title"
+    t.integer "timer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -136,6 +167,9 @@ ActiveRecord::Schema.define(version: 2018_06_08_093658) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers_users", "answers"
+  add_foreign_key "answers_users", "users"
   add_foreign_key "courses", "trainings"
   add_foreign_key "landing_pages_users", "landing_pages"
   add_foreign_key "landing_pages_users", "users"
@@ -144,5 +178,6 @@ ActiveRecord::Schema.define(version: 2018_06_08_093658) do
   add_foreign_key "promotions", "schools"
   add_foreign_key "promotions_trainings", "promotions"
   add_foreign_key "promotions_trainings", "trainings"
+  add_foreign_key "questions", "surveys"
   add_foreign_key "users", "promotions"
 end

@@ -1,0 +1,42 @@
+<h1>Add questions to survey</h1>
+<%= simple_form_for @survey, url: url do |f| %>
+  Name: <%= f.text_field :title %>
+  Timer (en min): <%= f.text_field :timer %>
+  <% @survey.questions.each do |question| %>
+    <div style="background-color:grey;color:white;margin:1em;padding:0.5em;">
+      <%= f.fields_for :questions, question do |q| %>
+        <!-- q-->
+        Title: <%= q.text_field :title %>
+        Supprimer -><%= q.check_box :_destroy %>
+
+        <!-- liste des réponses existantes -->
+        <% question.answers.each do |answer| %>
+          <%= q.fields_for :answers, answer do |a| %>
+            <div style="margin:2em 1em;">
+              <%= a.text_field :title %>
+              <%= a.input :right, label:"Bonne réponse ?"%>
+              Supprimer -> : <%= a.check_box :_destroy%>
+            </div>
+          <% end %>
+        <% end %>
+
+        <!-- ajout d'une réponse à une q existante-->
+        <%= q.simple_fields_for :answers, Answer.new do |answer| %>
+          <div class="links">
+            <%= link_to_add_association 'add answer', q, :answers %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- ajouter une question -->
+  <div id="questions">
+    <%= f.simple_fields_for :questions, Question.new do |question| %>
+      <div class="links">
+        <%= link_to_add_association 'add question', f, :questions %>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit 'Update survey' %>
+<% end %>

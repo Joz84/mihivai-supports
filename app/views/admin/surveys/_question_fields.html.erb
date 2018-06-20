@@ -1,0 +1,10 @@
+<div class="nested-fields" style="background-color:grey;color:white;margin:1em;padding:0.5em;">
+  <%= f.input :title %>
+  <%= link_to_remove_association "cancel", f %>
+
+  <%= f.simple_fields_for :answers, Answer.new do |answer| %>
+    <div class="links">
+      <%= link_to_add_association 'add answer', f, :answers %>
+    </div>
+  <% end %>
+</div>
