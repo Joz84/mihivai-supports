@@ -1,29 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @survey.title %><br><br>
-  <h4> ATTENTION : à la fin du timer, le QCM se validera automatiquement ! </h4>
+<div class="container d-flex flex-column">
+  <h4 class="text-center mt-5"><b> ATTENTION : à la fin du timer, le QCM se validera automatiquement ! </b></h4>
+
+  <p class="m-3 mb-4 text-center"> <i><u>Instructions</u></i> : Vous pouvez sélectionner une à plusieurs réponses. Si il y a deux réponses possibles et que vous
+    n'en avez qu'une de bonne, ou une de fausse, le point n'est pas accordé, toutefois vous ne perdez pas
+    de points ! Bonne chance :)
+  </p>
 
   <% unless current_user.admin? %>
     <div class="timer"></div>
   <% end %>
-  <%= simple_form_for @survey, :url => survey_match_path, method: :post do |f| %>
-    <% @survey.questions.each do |question| %>
-      <i>Question : <%= question.title %></i><br>
-        <% answers = question.answers %>
-        <div style="display:flex;margin:1em 3em">
-          <%= collection_check_boxes(:response, question.id, answers, :id, :title) do |b| %>
-            <div style="display:flex;">
-              <%=  b.label { b.check_box } %><%= b.text %>
+
+  <h1 class="display-4 mt-5 mb-4 text-white text-center"><b>QCM : <%= @survey.title %><b></h1>
+
+  <div class="container mt-5">
+    <%= simple_form_for @survey, :url => survey_match_path, method: :post do |f| %>
+      <% @survey.questions.each_with_index do |question, index| %>
+      <% answers = question.answers %>
+
+        <div class="rounded mx-auto survey-card normal-btn">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted"><i><b>Question <%= index + 1%></b></i> : <%= question.title %></h6>
+            <hr/>
+            <div class="d-flex flex-column justify-content-around w-75 mx-auto">
+              <%= collection_check_boxes(:response, question.id, answers, :id, :title) do |b| %>
+                <div class="d-flex align-items-center">
+                  <div class="checkbox"><%=  b.label { b.check_box } %></div>
+                  <h6 class="card-subtitle mx-4 my-0 text-muted"><%= b.text %></h6>
+                </div>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         </div>
       <% end %>
-      <br><br>
-      <%= f.submit 'Go to your result' %>
-  <% end %>
-</p>
+
+      <div class="form-group w-100 text-center mt-5">
+        <%= f.submit 'Go to your result', class:"small-btn"%>
+      </div>
+    <% end %>
+  </div>
+
+</div>
 
 <%= content_for :after_js do %>
   <script>

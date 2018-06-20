@@ -48,10 +48,12 @@
 .flip-clock-meridium a { color: #313333; }
 
 .flip-clock-wrapper {
+
   text-align: center;
   position: relative;
-  width: 100%;
-  margin: 1em;
+  width: fit-content;
+  margin:1em auto;
+  pointer-events: none;
 }
 
 .flip-clock-wrapper:before,
@@ -108,7 +110,7 @@
   width: 100%;
   height: 50%;
   font-size: 80px;
-  overflow: hidden; 
+  overflow: hidden;
   outline: 1px solid transparent; }
 
 .flip-clock-wrapper ul li a div .shadow {
