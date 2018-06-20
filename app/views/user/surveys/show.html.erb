@@ -23,7 +23,11 @@
       <br><br>
       <%= f.submit 'Go to your result' %>
   <% end %>
-
-  <%= javascript_tag "getValues(#{@survey.timer},#{@survey.id})" %>
-  <%= javascript_tag "startTimer()" %>
 </p>
+
+<%= content_for :after_js do %>
+  <script>
+    getValues(<%= @survey.timer %>, <%= @survey.id %>);
+    startTimer();
+  </script>
+<% end %>
