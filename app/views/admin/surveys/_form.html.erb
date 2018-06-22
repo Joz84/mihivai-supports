@@ -20,11 +20,11 @@
 
     <h4 class="text-center mt-3 mb-4"><b>Questions</b></h4>
 
-    <% @survey.questions.each do |question| %>
+    <% @survey.questions.each_with_index do |question, index| %>
       <div class="d-flex flex-column justify-content-around card py-2 px-4 mx-auto my-2">
           <%= f.fields_for :questions, question do |q| %>
             <div class="d-flex my-1 form-group text-dark flex-colum justify-content-between">
-              <%= q.label :title, "Question *"  %>
+              <%= q.label :title, "Question #{index+1} *"  %>
               <%= q.text_field :title, class:"form-control w-75" %>
             </div>
             <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
@@ -32,11 +32,11 @@
               <%= q.check_box :_destroy, class:"form-control" %>
             </div>
 
-            <% question.answers.each do |answer| %>
+            <% question.answers.each_with_index do |answer, index| %>
               <%= q.fields_for :answers, answer do |a| %>
                 <div class="d-flex flex-column justify-content-around card w-75 py-2 px-4 mx-auto my-2">
                   <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline justify-content-between">
-                    <%= a.label :title, "Titre *"  %>
+                    <%= a.label :title, "Réponse #{index+1} *"  %>
                     <%= a.text_field :title, class:"form-control w-75" %>
                   </div>
                   <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
