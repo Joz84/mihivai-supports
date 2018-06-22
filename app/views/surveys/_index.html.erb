@@ -1,13 +1,15 @@
-<p id="notice"><%= notice %></p>
 
 <div class="container-fluid text-center">
   <h1 class="display-4 mt-5 mb-5 text-white">Examens</h1>
   <div class="mt-5 d-md-flex flex-wrap justify-content-center text-center align-item-center mx-auto">
-    <% surveys.each do |survey| %>
-      <% unless survey.questions.empty? && !current_user.admin? %>
-        <div class="rounded mx-auto page-card normal-btn">
+    <% @surveys.each do |survey| %>
+      <% unless (survey.questions.empty? || survey.hidden ) && !current_user.admin? %>
+        <div class="rounded mx-auto page-card normal-btn my-3">
           <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted"><b><%= survey.title %></b></h6>
+            <% if current_user.admin? %>
+              <p> <%= survey.timer %> min, <%= survey.hidden? ? "caché" : "pas caché" %></p>
+            <% end %>
             <hr/>
             <h6 class="card-subtitle mx-4 my-0 text-muted text-center"><%= Survey.answered(survey, current_user) != true ? (link_to 'Répondre à ce questionnaire', user_survey_path(survey)) : "Vous avez déjà répondu." unless current_user.admin?%></h6>
             <div class="d-flex w-100 justify-content-around mt-2">

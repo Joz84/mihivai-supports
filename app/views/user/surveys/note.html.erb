@@ -2,7 +2,7 @@
   <h1 class="display-4 mt-5 mb-5 text-white">Notes</h1>
   <div class="mt-5 d-md-flex flex-wrap justify-content-center text-center align-item-center mx-auto">
     <% @surveys.each do |survey| %>
-      <% unless survey.questions.empty? && !current_user.admin? %>
+      <% unless (survey.questions.empty? || survey.hidden )&& !current_user.admin? %>
         <% x = matchAnswers(current_user, survey)%>
         <% y = survey.questions.count %>
         <div class="rounded mx-auto page-card normal-btn">

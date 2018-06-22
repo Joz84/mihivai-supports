@@ -12,7 +12,8 @@
 
   <% if user_signed_in? %>
     <div class="d-flex justify-content-around m-0">
-      <%= link_to "Mes notes", survey_note_path, class:"mx-3" unless current_user.admin?%>
+      <%= link_to "Examens", user_surveys_path, class:"mx-3" unless current_user.admin? || Survey.all.all?{ |s| s.hidden == true} %>
+      <%= link_to "Mes notes", survey_note_path, class:"mx-3" unless current_user.admin? %>
       <%= link_to t(".sign_out", default: "Déconnexion"), destroy_user_session_path, method: :delete, class:"mx-3"  %>
     </div>
   <% else %>

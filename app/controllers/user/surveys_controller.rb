@@ -2,9 +2,11 @@ class User::SurveysController < ApplicationController
   def index
     if current_user.admin?
       redirect_to admin_surveys_path
+    elsif Survey.all.all?{ |s| s.hidden == true }
+      redirect_to root_path
     else
-      render :index
       @surveys = Survey.all
+      render :index
     end
   end
 
