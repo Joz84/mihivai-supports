@@ -7,6 +7,13 @@
   }
 }
 
+.nohover {
+  &:hover {
+    transform: translateY(0px) !important;
+  }
+}
+
+
 .big-btn, .small-btn, .home-btn {
   cursor: pointer;
   border-radius:3px;

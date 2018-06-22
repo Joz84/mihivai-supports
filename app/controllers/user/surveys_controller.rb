@@ -1,6 +1,11 @@
 class User::SurveysController < ApplicationController
   def index
-    @surveys = Survey.all
+    if current_user.admin?
+      redirect_to admin_surveys_path
+    else
+      render :index
+      @surveys = Survey.all
+    end
   end
 
   def show
@@ -14,7 +19,7 @@ class User::SurveysController < ApplicationController
 
   def match
     params[:response].each do |question|
-      question[1].each do |answer_id|  
+      question[1].each do |answer_id|
         if !answer_id.blank?
           answer = Answer.find(answer_id)
           current_user.answers << answer

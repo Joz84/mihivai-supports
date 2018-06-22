@@ -1,42 +1,68 @@
-<h1>Add questions to survey</h1>
 <%= simple_form_for @survey, url: url do |f| %>
-  Name: <%= f.text_field :title %>
-  Timer (en min): <%= f.text_field :timer %>
-  <% @survey.questions.each do |question| %>
-    <div style="background-color:grey;color:white;margin:1em;padding:0.5em;">
-      <%= f.fields_for :questions, question do |q| %>
-        <!-- q-->
-        Title: <%= q.text_field :title %>
-        Supprimer -><%= q.check_box :_destroy %>
 
-        <!-- liste des réponses existantes -->
-        <% question.answers.each do |answer| %>
-          <%= q.fields_for :answers, answer do |a| %>
-            <div style="margin:2em 1em;">
-              <%= a.text_field :title %>
-              <%= a.input :right, label:"Bonne réponse ?"%>
-              Supprimer -> : <%= a.check_box :_destroy%>
+  <div class="container d-flex flex-column">
+    <h1 class=" mt-5 mb-4 text-center"><b><%= title %><b></h1>
+
+
+    <div class="d-flex flex-row justify-content-around card w-75 py-2 px-4 mx-auto my-2">
+      <div class="d-flex flex-column form-group w-25">
+        <b>Name :</b> <%= f.text_field :title, placeholder: "Ex : HTML/CSS", label:false %>
+      </div>
+      <div class="d-flex flex-column form-group w-25">
+        <b>Timer (en min) :</b> <%= f.text_field :timer, placeholder: "60", label:false %>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-around card w-75 py-2 px-4 mx-auto my-2">
+      <% @survey.questions.each do |question| %>
+          <%= f.fields_for :questions, question do |q| %>
+            <div class="d-flex flex-row align-items-baseline justify-content-around py-2 px-4 mx-auto my-2">
+              <div class="d-flex form-group mx-3 my-0">
+                 <p class="mx-3">Question : </p><%= q.text_field :title %>
+              </div>
+              <div class="d-flex form-group mx-3 my-0">
+                 <p class="mx-3">Supprimer -> </p><%= q.check_box :_destroy, class:"mt-1" %>
+              </div>
             </div>
-          <% end %>
-        <% end %>
 
-        <!-- ajout d'une réponse à une q existante-->
-        <%= q.simple_fields_for :answers, Answer.new do |answer| %>
-          <div class="links">
-            <%= link_to_add_association 'add answer', q, :answers %>
-          </div>
-        <% end %>
+            <% question.answers.each do |answer| %>
+              <%= q.fields_for :answers, answer do |a| %>
+                <div class="d-flex flex-row align-items-baseline justify-content-around py-2 px-4 mx-auto my-2">
+                  <div class="d-flex form-group mx-3 my-0">
+                    <p class="mx-3"></p><%= a.text_field :title %>
+                    <p class="mx-3"></p><%= a.input :right, label:"Bonne réponse ?"%>
+                  </div>
+                  <div class="d-flex form-group mx-3 my-0">
+                     <p class="mx-3">Supprimer -></p><%= a.check_box :_destroy, class:"mt-1" %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+
+            <!-- ajout d'une réponse à une q existante-->
+            <%= q.simple_fields_for :answers, Answer.new do |answer| %>
+              <div class="links normal-btn border p-1 w-auto mx-auto text-center bg-white">
+                <%= link_to_add_association 'add answer', q, :answers %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
 
-  <!-- ajouter une question -->
-  <div id="questions">
-    <%= f.simple_fields_for :questions, Question.new do |question| %>
-      <div class="links">
-        <%= link_to_add_association 'add question', f, :questions %>
-      </div>
-    <% end %>
+    <!-- ajouter une question -->
+    <div id="questions">
+      <%= f.simple_fields_for :questions, Question.new do |question| %>
+      <div class="links normal-btn border p-1 w-auto mx-auto text-center bg-white w-50">
+          <%= link_to_add_association 'add question', f, :questions %>
+        </div>
+      <% end %>
+    </div>
+    <%= f.submit 'Update survey' %>
+  <% end %>
   </div>
-  <%= f.submit 'Update survey' %>
-<% end %>
+
+
+<div class="form-group w-100 text-center mt-5">
+  <%= link_to 'Retour aux examens', admin_surveys_path, class:"small-btn" %>
+</div>

@@ -4,22 +4,22 @@
   <h4 class="text-center mt-5"><b> ATTENTION : à la fin du timer, le QCM se validera automatiquement ! </b></h4>
 
   <p class="m-3 mb-4 text-center"> <i><u>Instructions</u></i> : Vous pouvez sélectionner une à plusieurs réponses. Si il y a deux réponses possibles et que vous
-    n'en avez qu'une de bonne, ou une de fausse, le point n'est pas accordé, toutefois vous ne perdez pas
-    de points ! Bonne chance :)
+    n'en avez qu'une de bonne ou qu'une de fausse, le point n'est pas accordé, toutefois vous ne perdez pas
+    de points. <br> <b>Bonne chance !</b>
   </p>
 
   <% unless current_user.admin? %>
     <div class="timer"></div>
   <% end %>
 
-  <h1 class="display-4 mt-5 mb-4 text-white text-center"><b>QCM : <%= @survey.title %><b></h1>
+  <h1 class=" mt-5 mb-4 text-center"><b>Examen - <%= @survey.title %><b></h1>
 
   <div class="container mt-5">
     <%= simple_form_for @survey, :url => survey_match_path, method: :post do |f| %>
       <% @survey.questions.each_with_index do |question, index| %>
       <% answers = question.answers %>
 
-        <div class="rounded mx-auto survey-card normal-btn">
+        <div class="rounded mx-auto survey-card normal-btn nohover">
           <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted"><i><b>Question <%= index + 1%></b></i> : <%= question.title %></h6>
             <hr/>
