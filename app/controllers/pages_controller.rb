@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def admin
+    redirect to root_path unless current_user.admin?
+  end
 end
