@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all.order(title: :asc)
+    @courses = Course.where(training_id: current_user.promotion.training_ids).order(title: :asc)
   end
 
   def show
