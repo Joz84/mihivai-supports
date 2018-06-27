@@ -33,5 +33,6 @@ class User::SurveysController < ApplicationController
 
   def note
     @surveys = Survey.all
+    @users = User.all
   end
 end
