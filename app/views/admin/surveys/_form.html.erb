@@ -50,25 +50,24 @@
                 </div>
               <% end %>
             <% end %>
-
             <!-- ajout d'une réponse à une q existante-->
             <%= q.simple_fields_for :answers, Answer.new do |answer| %>
               <div class="normal-btn py-2 px-3 mx-auto mt-3 text-center bg-white rounded" style="width:fit-content;">
                 <%= link_to_add_association 'add answer', q, :answers %>
               </div>
             <% end %>
-          <% end %>
-        <% end %>
-
-      </div>
-
-      <div id="questions">
-        <%= f.simple_fields_for :questions, Question.new do |question| %>
-        <div class="normal-btn py-2 px-3 mx-auto mt-3 text-center bg-white rounded" style="width:fit-content;">
-            <%= link_to_add_association 'add question', f, :questions %>
           </div>
+
         <% end %>
+      <% end %>
+    </div>
+
+  <div id="questions">
+    <%= f.simple_fields_for :questions, Question.new do |question| %>
+    <div class="normal-btn py-2 px-3 mx-auto mt-3 text-center bg-white rounded" style="width:fit-content;">
+        <%= link_to_add_association 'add question', f, :questions %>
       </div>
+    <% end %>
   </div>
 
   <div class="form-group w-100 text-center my-5">
