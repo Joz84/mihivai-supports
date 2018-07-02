@@ -33,6 +33,18 @@ class User::SurveysController < ApplicationController
 
   def note
     @surveys = Survey.all
-    @users = User.all
+    if params[:search].nil? || search_params[:user_id].empty?
+      @users = User.all
+    else
+      @users = [User.find(search_params[:user_id])]
+    end
+
+
+  end
+
+  private
+
+  def search_params
+    params.require(:search).permit(:user_id)
   end
 end
