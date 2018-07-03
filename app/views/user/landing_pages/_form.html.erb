@@ -47,7 +47,7 @@
           <div id="image-<%= image.blob_id %>" class="d-flex my-2">
             <%= image.filename %>
             <div class="delete-image">
-              <%= link_to delete_image_attachment_user_landing_page_url(image.signed_id), method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+              <%= link_to delete_image_attachment_user_landing_page_url(image.signed_id), method: :delete, data: { confirm: 'Are you sure?' } do %>
               <i class="far fa-trash-alt ml-3"></i>
             </div>
             <% end %>
