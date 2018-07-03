@@ -13,7 +13,7 @@ function addLandingPage(landingPageHTML) {
 <% else %>
   addLandingPage('<%= j render "landing_pages/landing_page", page: @landing_page %>');
   refreshForm('<%= j render "form", landing_page: LandingPage.new, url: user_landing_pages_path %>');
+  $('html,body').animate({scrollTop: $("#display_landing_pages").offset().top}, 'slow');
 <% end %>
 
 uploadImages();
-

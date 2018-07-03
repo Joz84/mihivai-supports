@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   namespace :user do
     resources :projects,      only: [:index, :create, :edit, :update, :destroy]
     resources :landing_pages, only: [:index, :create, :edit, :update, :destroy, :show]
+    resources :landing_pages do
+      member do
+        delete :delete_image_attachment
+      end
+    end
   end
 
 end

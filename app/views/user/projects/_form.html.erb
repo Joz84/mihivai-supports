@@ -1,4 +1,15 @@
 <%= simple_form_for project, url: url, remote: true do |f| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation" class="p-3 mb-2 border text-danger">
+      <h5><%= pluralize(project.errors.count, "error") %> have been raised :</h5>
+      <ul>
+      <% project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="mx-auto">
     <h2 class="mt-2 mb-5 text-center" style="color:white;font-weight:900">Ajouter un projet</h1>
 
