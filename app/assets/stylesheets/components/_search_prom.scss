@@ -1,0 +1,26 @@
+.search-container {
+  margin: auto;
+  .form-group {
+    width:100%;
+  }
+}
+
+.search-prom{
+  display: flex;
+  i {
+    background-color: white;
+    width:fit-content;
+    height:auto;
+    margin:7px;
+    padding: 12px;
+    border-radius: 3px;
+    color: #87C5BE;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+  }
+  input {
+    display: none;
+  }
+}

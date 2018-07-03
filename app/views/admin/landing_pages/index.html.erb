@@ -1,12 +1,17 @@
 
 <div class="d-flex flex-wrap flex-column">
 
-  <div class="container-fluid p-4 m-4 rounded project-form-container w-75 mx-auto">
+  <div class="container-fluid p-5 m-4 rounded project-form-container w-75 mx-auto">
     <h1 class="display-4 my-4 text-center" style="color:white">Pages</h1>
 
     <%= simple_form_for :search, url: admin_landing_pages_path, method: :get do |f| %>
-      <%= f.input :promotion_id, collection: Promotion.all %>
-      <%= f.button :submit, class:"text-center normal-btn"%>
+      <div class="d-flex align-items-end w-100 search-container">
+        <%= f.input :promotion_id, collection: Promotion.all, label:false %>
+        <label class="normal-btn search-prom">
+          <i class="fas fa-search fa-lg"></i>
+          <%= f.button :submit %>
+        </label>
+      </div>
     <% end %>
   </div>
 
@@ -56,9 +61,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  function displayForm(el){
-    document.getElementById("edit-field-"+el).classList.toggle("display-none");
-  }
-</script>

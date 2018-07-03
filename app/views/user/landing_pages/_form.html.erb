@@ -1,3 +1,4 @@
+
 <%= simple_form_for landing_page, url: url  do |f| %>
   <div class="form-group">
     <%= f.label :title, "TITRE *" %>
@@ -27,8 +28,8 @@
     </div>
     <div id="upload-images">
       <label class="small-btn upload_image">
-        Ajouter une image
-        <%= f.file_field :images, multiple: true, direct_upload: true %>
+        <p class="m-0 image-labels">Ajouter une image</p>
+        <%= f.file_field :images, multiple: true, label:false %>
       </label>
     </div>
   </div>

@@ -30,6 +30,10 @@ class User::LandingPagesController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html { render :edit }
+      format.js
+    end
   end
 
   def update
