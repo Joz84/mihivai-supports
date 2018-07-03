@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Notes") do |sheet|
+  sheet.add_row ["NOM", "QCM", "GOOD","FINAL"]
+  sheet.add_row []
+  @users.each do |user|
+    @surveys.each do |survey|
+      x = matchAnswers(user, survey)
+      y = survey.questions.count
+      sheet.add_row [user.name, survey.title,"#{x} / #{y}","#{getNote(x,y)} / 20.0"]
+    end
+  end
+  sheet.add_row []
+end

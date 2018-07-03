@@ -9,6 +9,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2'
 gem 'redis'
+gem 'axlsx_rails'
 
 gem 'jquery-rails'
 gem 'autoprefixer-rails'

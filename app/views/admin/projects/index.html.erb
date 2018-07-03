@@ -6,7 +6,7 @@
     <%= simple_form_for :search, url: admin_projects_path, method: :get do |f| %>
       <div class="d-flex align-items-end w-100 search-container">
         <%= f.input :promotion_id, collection: Promotion.all, label:false %>
-        <label class="normal-btn search-prom">
+        <label class="normal-btn search-promotion">
           <i class="fas fa-search fa-lg"></i>
           <%= f.button :submit %>
         </label>
