@@ -22,10 +22,12 @@ class LandingPage < ApplicationRecord
   def with_images(text)
     regex = /images\/(\S*(jpeg|jpg|png|svg))/
     image_urls = images.map do |image|
-      url = Rails.application
-                 .routes.url_helpers
-                 .rails_blob_path(image, only_path: true)
-      [url.split("/").last, url]
+      unless image.blob.nil?
+        url = Rails.application
+                   .routes.url_helpers
+                   .rails_blob_path(image, only_path: true)
+        [url.split("/").last, url]
+      end
     end
     text.gsub(regex) { |s| image_urls.to_h[s.split("/").last] }
   end
