@@ -1,0 +1,8 @@
+function refreshForm(innerHTML) {
+  const newLandingPageForm = document.getElementById('new_landing_page');
+  newLandingPageForm.innerHTML = innerHTML;
+}
+
+refreshForm('<%= j render "form", landing_page: @landing_page, url: user_landing_page_path(@landing_page) %>');
+
+uploadImages();
