@@ -27,6 +27,6 @@ class Admin::LandingPagesController < ApplicationController
   end
 
   def landing_page_params
-    params.require(:landing_page).permit(:rating)
+    params.require(:landing_page).permit(:rating, :coefficient)
   end
 end

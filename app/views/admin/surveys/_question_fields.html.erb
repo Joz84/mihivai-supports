@@ -1,0 +1,14 @@
+<div class="d-flex flex-column justify-content-around card py-2 px-4 mx-auto my-2 text-dark">
+  <div class="d-flex my-1 form-group flex-colum align-items-baseline justify-content-between">
+    <%= f.label :title, "Titre *"  %>
+    <%= f.text_field :title, class:"form-control w-75" %>
+  </div>
+  <%= link_to_remove_association "cancel", f %>
+
+
+  <%= f.simple_fields_for :answers, Answer.new do |answer| %>
+    <div class="normal-btn py-2 px-3 mx-auto mt-3 text-center bg-white rounded" style="width:fit-content;">
+      <%= link_to_add_association 'add answer', f, :answers %>
+    </div>
+  <% end %>
+</div>

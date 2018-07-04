@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :landing_pages
   has_and_belongs_to_many :projects
+  has_and_belongs_to_many :answers
+
   belongs_to :promotion
 
   validates :promotion, presence: true
@@ -24,4 +26,9 @@ class User < ApplicationRecord
     "#{first_name.chr.upcase} #{last_name.chr.upcase}"
   end
 
+  def add_answers(answer_ids)
+    answer_ids.each do |answer_id|
+      answers << Answer.find(answer_id) unless answer_id.blank?
+    end
+  end
 end

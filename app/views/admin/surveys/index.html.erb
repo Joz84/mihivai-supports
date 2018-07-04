@@ -1,0 +1,7 @@
+<%= render "surveys/index", surveys: @surveys %>
+
+<div class="form-group w-100 text-center mt-5">
+  <% if current_user.admin?%>
+    <%= link_to 'New survey', new_admin_survey_path, class:"small-btn" %>
+  <% end %>
+</div>

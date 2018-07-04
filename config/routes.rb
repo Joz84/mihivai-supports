@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :projects, only: [:index, :update]
+    resources :projects,      only: [:index, :update]
     resources :landing_pages, only: [:index, :update]
+    resources :surveys,       only: [:index, :new, :create, :update, :edit, :destroy]
+
   end
 
   devise_for :users
@@ -13,6 +15,11 @@ Rails.application.routes.draw do
   namespace :user do
     resources :projects,      only: [:index, :create, :edit, :update, :destroy]
     resources :landing_pages, only: [:index, :create, :edit, :update, :destroy, :show]
+    resources :surveys,       only: [:index, :show, :match, :note]
   end
+
+  post 'match' => 'user/surveys#match', as: :survey_match
+  get 'note' => 'user/surveys#note', as: :survey_note
+
 
 end

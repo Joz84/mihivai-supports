@@ -1,0 +1,62 @@
+<div class="container-fluid text-center">
+  <div class="container-fluid p-4 m-4 rounded project-form-container w-75 mx-auto">
+    <h1 class="display-4 mt-5 mb-5 text-white">Notes</h1>
+
+    <%= simple_form_for :search, url: survey_note_path, method: :get do |f| %>
+      <%= f.input :user_id, collection: User.all, label:false %>
+      <%= f.button :submit, class:"text-center normal-btn"%>
+    <% end %>
+  </div>
+
+  <div class="mt-5 d-md-flex flex-column justify-content-start text-center align-item-center mx-auto">
+    <% @users.each do |user| %>
+      <% landing_pages = LandingPage.where(id: user.landing_page_ids) %>
+      <% projects = Project.where(id: user.project_ids) %>
+
+      <div class="bg-light w-100 rounded mx-auto border py-3">
+        <table class="w-100 px-4  d-flex justify-content-center">
+          <tbody class="w-100">
+
+          <tr class="d-flex justify-content-between border mt-2 mb-1">
+            <th class="w-25">Name</th>
+            <th> || </th>
+            <% landing_pages.each do |landing_page| %>
+              <th class="w-25"><%= landing_page.title %> <%= "(#{landing_page.coefficient})" if landing_page.coefficient? %></th>
+            <% end %>
+            <th> || </th>
+            <% projects.each do |project| %>
+              <th class="w-25"><%= project.url[0..10] %>.. <%= "(#{project.coefficient})" if project.coefficient? %></th>
+            <% end %>
+            <th> || </th>
+            <% @surveys.each do |survey| %>
+              <th class="w-25"><%= survey.title %> <%= "(#{survey.coefficient})" if survey.coefficient? %></th>
+            <% end %>
+            <th> || </th>
+            <th class="w-25">Moyenne</th>
+          </tr>
+
+          <tr class="d-flex w-100 justify-content-between ">
+            <td class="w-25"><b><%= user.name %></b></td>
+            <td> || </td>
+            <% landing_pages.each do |landing_page| %>
+              <td class="w-25"><%= landing_page.rating %>/20</td>
+            <% end %>
+            <td> || </td>
+            <% projects.each do |project| %>
+              <td class="w-25"><%= project.rating %>/20</td>
+            <% end %>
+            <td> || </td>
+            <% @surveys.each do |survey| %>
+              <td class="w-25"><%= getNote(matchAnswers(current_user, survey),survey.questions.count) %>/20</td>
+            <% end %>
+            <td> || </td>
+            <td class="w-25"><%= average(user,landing_pages,projects,@surveys)%>/20</td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <br><br>
+    <% end %>
+  </div>
+</div>
