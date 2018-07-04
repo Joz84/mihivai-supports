@@ -27,6 +27,6 @@ class Admin::ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:rating)
+    params.require(:project).permit(:rating, :coefficient)
   end
 end

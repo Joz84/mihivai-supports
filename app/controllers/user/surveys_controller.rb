@@ -2,7 +2,7 @@ class User::SurveysController < ApplicationController
   def index
     if current_user.admin?
       redirect_to admin_surveys_path
-    elsif Survey.all.all?{ |s| s.hidden == true }
+    elsif Survey.all.all?{ |s| s.hidden }
       redirect_to root_path
     else
       @surveys = Survey.all
@@ -20,19 +20,14 @@ class User::SurveysController < ApplicationController
   end
 
   def match
-    params[:response].each do |question|
-      question[1].each do |answer_id|
-        if !answer_id.blank?
-          answer = Answer.find(answer_id)
-          current_user.answers << answer
-        end
-      end
-    end
+    answer_ids = params[:response].values.flatten
+    current_user.add_answers(answer_ids)
     redirect_to survey_note_path
   end
 
   def note
     @surveys = Survey.all
+
     if params[:search].nil? || search_params[:user_id].empty?
       @users = User.all
     else

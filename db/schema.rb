@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_071206) do
+ActiveRecord::Schema.define(version: 2018_07_03_160555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_071206) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "rating"
+    t.integer "coefficient"
   end
 
   create_table "landing_pages_users", force: :cascade do |t|
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_071206) do
     t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "coefficient"
   end
 
   create_table "projects_users", force: :cascade do |t|
@@ -133,6 +135,7 @@ ActiveRecord::Schema.define(version: 2018_06_22_071206) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hidden"
+    t.integer "coefficient"
   end
 
   create_table "trainings", force: :cascade do |t|

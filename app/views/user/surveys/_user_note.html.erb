@@ -1,6 +1,56 @@
 <div class="container-fluid text-center">
   <h1 class="display-4 mt-5 mb-5 text-white">Notes</h1>
-  <div class="mt-5 d-md-flex flex-wrap justify-content-center text-center align-item-center mx-auto">
+
+  <div class="mt-5 d-md-flex flex-column justify-content-start text-center align-item-center mx-auto">
+    <div class="bg-light rounded w-50 mx-auto border py-3">
+    <p><b> <%= current_user.name %> </b></p>
+    <table class="w-100 px-4  d-flex justify-content-center">
+      <tbody class="w-100">
+
+        <!-- QCM -->
+        <tr class="d-flex w-100 justify-content-between border mb-1">
+          <th class="w-50">QCM</th>
+          <th class="w-50">Note</th>
+        </tr>
+        <% @surveys.each do |survey| %>
+          <tr class="d-flex w-100 justify-content-between">
+            <td class="w-50"><i><%= survey.title %></i></td>
+            <td class="w-50" id="survey-<%= survey.id %>-user-<% current_user.id %>"><span><%= getNote(matchAnswers(current_user, survey),survey.questions.count) %></span> / 20.0</td>
+          </tr>
+        <% end %>
+
+        <!-- PAGES -->
+        <tr class="d-flex w-100 justify-content-between border mt-4 mb-1">
+          <th class="w-50">Pages</th>
+          <th class="w-50">Note</th>
+        </tr>
+        <% landing_pages = LandingPage.where(id: current_user.landing_page_ids) %>
+        <% landing_pages.each do |landing_page| %>
+          <tr class="d-flex w-100 justify-content-between">
+            <td class="w-50"><%= landing_page.title %></td>
+            <td class="w-50"><%= landing_page.rating %></td>
+          </tr>
+        <% end %>
+
+        <!-- PROJETS -->
+        <tr class="d-flex w-100 justify-content-between border mt-4 mb-1">
+          <th class="w-50">Projet</th>
+          <th class="w-50">Note</th>
+        </tr>
+        <% projects = Project.where(id: current_user.project_ids) %>
+        <% projects.each do |project| %>
+          <tr class="d-flex w-100 justify-content-between">
+            <td class="w-50"><%= project.url %></td>
+            <td class="w-50"><%= project.rating %></td>
+          </tr>
+        <% end %>
+
+        </tbody>
+      </table>
+    </div>
+    <br><br>
+  </div>
+  <!-- <div class="mt-5 d-md-flex flex-wrap justify-content-center text-center align-item-center mx-auto">
     <% @surveys.each do |survey| %>
       <% unless (survey.questions.empty? || survey.hidden )&& !current_user.admin? %>
         <% x = matchAnswers(current_user, survey)%>
@@ -16,5 +66,5 @@
         </div>
       <% end %>
     <% end %>
-  </div>
+  </div> -->
 </div>

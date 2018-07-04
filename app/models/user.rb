@@ -26,4 +26,9 @@ class User < ApplicationRecord
     "#{first_name.chr.upcase} #{last_name.chr.upcase}"
   end
 
+  def add_answers(answer_ids)
+    answer_ids.each do |answer_id|
+      answers << Answer.find(answer_id) unless answer_id.blank?
+    end
+  end
 end

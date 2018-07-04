@@ -3,71 +3,70 @@
   <%= simple_form_for @survey, url: url do |f| %>
   <h1 class=" mt-5 mb-4 text-center"><b><%= title %><b></h1>
 
-    <div class="d-flex flex-column justify-content-around card py-2 px-4 mx-auto my-2">
-      <div class="d-flex my-1 form-group text-dark flex-colum justify-content-between">
-        <%= f.label :title, "Titre *"  %>
-        <%= f.text_field :title, placeholder: "Ex : HTML/CSS", class:"form-control w-75" %>
-      </div>
-      <div class="d-flex my-1 form-group text-dark flex-colum justify-content-between">
-        <%= f.label :timer, "Timer *"  %>
-        <%= f.text_field :timer, placeholder: "60", class:"form-control w-75" %>
-      </div>
-      <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
-        <%= f.label :hidden, "Caché", class:"mr-3"  %>
-        <%= f.check_box :hidden, class:"form-control" %>
-      </div>
+  <div class="d-flex flex-column justify-content-around card py-2 px-4 mx-auto my-2">
+    <div class="d-flex my-1 form-group text-dark flex-colum justify-content-between">
+      <%= f.label :title, "Titre *"  %>
+      <%= f.text_field :title, placeholder: "Ex : HTML/CSS", class:"form-control w-75" %>
     </div>
+    <div class="d-flex my-1 form-group text-dark flex-colum justify-content-between">
+      <%= f.label :timer, "Timer *"  %>
+      <%= f.text_field :timer, placeholder: "60", class:"form-control w-75" %>
+    </div>
+    <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
+      <%= f.label :hidden, "Caché", class:"mr-3"  %>
+      <%= f.check_box :hidden, class:"form-control" %>
+    </div>
+  </div>
 
-    <h4 class="text-center mt-3 mb-4"><b>Questions</b></h4>
+  <h4 class="text-center mt-3 mb-4"><b>Questions</b></h4>
 
-    <% @survey.questions.each_with_index do |question, index| %>
-      <div class="d-flex flex-column justify-content-around card py-2 px-4 mx-auto my-2">
-          <%= f.fields_for :questions, question do |q| %>
-            <div class="d-flex my-1 form-group text-dark flex-colum justify-content-between">
-              <%= q.label :title, "Question #{index+1} *"  %>
-              <%= q.text_field :title, class:"form-control w-75" %>
-            </div>
-            <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
-              <%= q.label :_destroy, "Supprimer", class:"mr-3"  %>
-              <%= q.check_box :_destroy, class:"form-control" %>
-            </div>
-
-            <% question.answers.each_with_index do |answer, index| %>
-              <%= q.fields_for :answers, answer do |a| %>
-                <div class="d-flex flex-column justify-content-around card w-75 py-2 px-4 mx-auto my-2">
-                  <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline justify-content-between">
-                    <%= a.label :title, "Réponse #{index+1} *"  %>
-                    <%= a.text_field :title, class:"form-control w-75" %>
-                  </div>
-                  <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
-                    <%= a.label :right, "Right", class:"mr-3"  %>
-                    <%= a.check_box :right, class:"form-control" %>
-                  </div>
-                  <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
-                    <%= a.label :_destroy, "Supprimer", class:"mr-3"  %>
-                    <%= a.check_box :_destroy, class:"form-control" %>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-            <!-- ajout d'une réponse à une q existante-->
-            <%= q.simple_fields_for :answers, Answer.new do |answer| %>
-              <div class="normal-btn py-2 px-3 mx-auto mt-3 text-center bg-white rounded" style="width:fit-content;">
-                <%= link_to_add_association 'add answer', q, :answers %>
-              </div>
-            <% end %>
+  <% @survey.questions.each_with_index do |question, index| %>
+    <div class="d-flex flex-column justify-content-around card py-2 px-4 mx-auto my-2">
+        <%= f.fields_for :questions, question do |q| %>
+          <div class="d-flex my-1 form-group text-dark flex-colum justify-content-between">
+            <%= q.label :title, "Question #{index+1} *"  %>
+            <%= q.text_field :title, class:"form-control w-75" %>
+          </div>
+          <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
+            <%= q.label :_destroy, "Supprimer", class:"mr-3"  %>
+            <%= q.check_box :_destroy, class:"form-control" %>
           </div>
 
-        <% end %>
+          <% question.answers.each_with_index do |answer, index| %>
+            <%= q.fields_for :answers, answer do |a| %>
+              <div class="d-flex flex-column justify-content-around card w-75 py-2 px-4 mx-auto my-2">
+                <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline justify-content-between">
+                  <%= a.label :title, "Réponse #{index+1} *"  %>
+                  <%= a.text_field :title, class:"form-control w-75" %>
+                </div>
+                <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
+                  <%= a.label :right, "Right", class:"mr-3"  %>
+                  <%= a.check_box :right, class:"form-control" %>
+                </div>
+                <div class="d-flex my-1 form-group text-dark flex-colum align-items-baseline">
+                  <%= a.label :_destroy, "Supprimer", class:"mr-3"  %>
+                  <%= a.check_box :_destroy, class:"form-control" %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <!-- ajout d'une réponse à une q existante-->
+          <%= q.simple_fields_for :answers, Answer.new do |answer| %>
+            <div class="normal-btn py-2 px-3 mx-auto mt-3 text-center bg-white rounded" style="width:fit-content;">
+              <%= link_to_add_association 'add answer', q, :answers %>
+            </div>
+          <% end %>
+        </div>
+
+      <% end %>
+    <% end %>
+    <div id="questions">
+      <%= f.simple_fields_for :questions, Question.new do |question| %>
+      <div class="normal-btn py-2 px-3 mx-auto mt-3 text-center bg-white rounded" style="width:fit-content;">
+          <%= link_to_add_association 'add question', f, :questions %>
+        </div>
       <% end %>
     </div>
-
-  <div id="questions">
-    <%= f.simple_fields_for :questions, Question.new do |question| %>
-    <div class="normal-btn py-2 px-3 mx-auto mt-3 text-center bg-white rounded" style="width:fit-content;">
-        <%= link_to_add_association 'add question', f, :questions %>
-      </div>
-    <% end %>
   </div>
 
   <div class="form-group w-100 text-center my-5">

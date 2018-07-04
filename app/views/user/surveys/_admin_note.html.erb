@@ -10,48 +10,48 @@
 
   <div class="mt-5 d-md-flex flex-column justify-content-start text-center align-item-center mx-auto">
     <% @users.each do |user| %>
-    <div class="bg-light rounded w-50 mx-auto border py-3">
-      <p><b> <%= user.name %> </b></p>
-      <table class="w-100 px-4  d-flex justify-content-center">
-        <tbody class="w-100">
+      <% landing_pages = LandingPage.where(id: user.landing_page_ids) %>
+      <% projects = Project.where(id: user.project_ids) %>
 
-          <!-- QCM -->
-          <tr class="d-flex w-100 justify-content-between border mt-2 mb-1">
-            <th class="w-50">QCM</th>
-            <th class="w-50">Note</th>
-          </tr>
-          <% @surveys.each do |survey| %>
-            <tr class="d-flex w-100 justify-content-between">
-              <td class="w-50"><i><%= survey.title %></i></td>
-              <td class="w-50" id="survey-<%= survey.id %>-user-<% user.id %>"><span><%= getNote(matchAnswers(user, survey),survey.questions.count) %></span> / 20.0</td>
-            </tr>
-          <% end %>
+      <div class="bg-light w-100 rounded mx-auto border py-3">
+        <table class="w-100 px-4  d-flex justify-content-center">
+          <tbody class="w-100">
 
-          <!-- PAGES -->
-          <tr class="d-flex w-100 justify-content-between border mt-2 mb-1">
-            <th class="w-50">Pages</th>
-            <th class="w-50">Note</th>
+          <tr class="d-flex justify-content-between border mt-2 mb-1">
+            <th class="w-25">Name</th>
+            <th> || </th>
+            <% landing_pages.each do |landing_page| %>
+              <th class="w-25"><%= landing_page.title %> <%= "(#{landing_page.coefficient})" if landing_page.coefficient? %></th>
+            <% end %>
+            <th> || </th>
+            <% projects.each do |project| %>
+              <th class="w-25"><%= project.url[0..10] %>.. <%= "(#{project.coefficient})" if project.coefficient? %></th>
+            <% end %>
+            <th> || </th>
+            <% @surveys.each do |survey| %>
+              <th class="w-25"><%= survey.title %> <%= "(#{survey.coefficient})" if survey.coefficient? %></th>
+            <% end %>
+            <th> || </th>
+            <th class="w-25">Moyenne</th>
           </tr>
-          <% landing_pages = LandingPage.where(id: user.landing_page_ids) %>
-          <% landing_pages.each do |landing_page| %>
-            <tr class="d-flex w-100 justify-content-between">
-              <td class="w-50"><%= landing_page.title %></td>
-              <td class="w-50"><%= landing_page.rating %></td>
-            </tr>
-          <% end %>
 
-          <!-- PROJETS -->
-          <tr class="d-flex w-100 justify-content-between border mt-2 mb-1">
-            <th class="w-50">Projet</th>
-            <th class="w-50">Note</th>
+          <tr class="d-flex w-100 justify-content-between ">
+            <td class="w-25"><b><%= user.name %></b></td>
+            <td> || </td>
+            <% landing_pages.each do |landing_page| %>
+              <td class="w-25"><%= landing_page.rating %>/20</td>
+            <% end %>
+            <td> || </td>
+            <% projects.each do |project| %>
+              <td class="w-25"><%= project.rating %>/20</td>
+            <% end %>
+            <td> || </td>
+            <% @surveys.each do |survey| %>
+              <td class="w-25"><%= getNote(matchAnswers(current_user, survey),survey.questions.count) %>/20</td>
+            <% end %>
+            <td> || </td>
+            <td class="w-25"><%= average(user,landing_pages,projects,@surveys)%>/20</td>
           </tr>
-          <% projects = Project.where(id: user.project_ids) %>
-          <% projects.each do |project| %>
-            <tr class="d-flex w-100 justify-content-between">
-              <td class="w-50"><%= project.url %></td>
-              <td class="w-50"><%= project.rating %></td>
-            </tr>
-          <% end %>
 
           </tbody>
         </table>
