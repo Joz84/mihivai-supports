@@ -1,23 +1,20 @@
-<h2>Log in</h2>
+<h2 class="text-center text-white my-2">Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="form-inputs">
-          <%= f.input :email, required: false, autofocus: true %>
-          <%= f.input :password, required: false, label: "Mot de passe" %>
-          <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
-        </div>
+  <div class="mx-auto">
+    <div class="container-fluid p-3 m-4 rounded project-form-container h-100 w-50 mx-auto">
+      <%= f.input :email, required: false, autofocus: true %>
+      <%= f.input :password, required: false, label: "Mot de passe" %>
+      <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
 
-        <div class="form-actions">
+      <div class="text-center d-flex w-100 justify-content-center align-items-center">
+        <div class="normal-btn">
           <%= f.button :submit, "Se connecter" %>
         </div>
-
-        <%= render "devise/shared/links" %>
       </div>
+
+      <%= render "devise/shared/links" %>
     </div>
   </div>
 <% end %>
-
