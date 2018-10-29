@@ -21,6 +21,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cocoon'
 gem 'metainspector'
+gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
 
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'

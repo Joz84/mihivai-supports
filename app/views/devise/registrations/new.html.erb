@@ -1,32 +1,35 @@
-<h2>Sign up</h2>
+<div class="container-fluid">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <h2>Créer votre compte</h2>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-        <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
-          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: "Mot de passe" %>
-          <%= f.input :password_confirmation, required: true, label: "Confirmation du mot de passe" %>
-          <%= f.input :promotion_id, collection: Promotion.all, label: "Classe" %>
-          <%#= f.input :group %>
-          <%#= f.input :description %>
-          <%= f.input :first_name, label: "Prénom" %>
-          <%= f.input :last_name, label: "Nom" %>
-          <%#= f.input :site %>
-          <%#= f.input :linkedin %>
-          <%= f.input :conditions_validation, as: :boolean, label: " J'ai lu et j'approuve <a href='https://www.mihivai.com/mention.html'>les conditions générales</a> ".html_safe %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+          <div class="form-inputs">
+            <%= f.input :email, required: true, autofocus: true %>
+            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: "Mot de passe" %>
+            <%= f.input :password_confirmation, required: true, label: "Confirmation du mot de passe" %>
+            <%= f.input :promotion_id, collection: Promotion.all, label: "Classe" %>
+            <%#= f.input :group %>
+            <%#= f.input :description %>
+            <%= f.input :first_name, label: "Prénom" %>
+            <%= f.input :last_name, label: "Nom" %>
+            <%#= f.input :site %>
+            <%#= f.input :linkedin %>
+            <%= f.input :conditions_validation, as: :boolean, label: " J'ai lu et j'approuve <a href='https://www.mihivai.com/mention.html'>les conditions générales</a> ".html_safe %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "S'inscrire" %>
+          </div>
+          <%= render "devise/shared/links" %>
         </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "S'inscrire" %>
-        </div>
-        <%= render "devise/shared/links" %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
+</div>
