@@ -13,7 +13,7 @@ class User::ProjectsController < ApplicationController
     if @project.save
       respond_to do |format|
         format.html { redirect_to user_projects_path }
-        format.js  { flash.now[:alert] = nil}
+        format.js  { flash.now[:alert] = "Le projet a bien été créé"}
       end
     else
       respond_to do |format|

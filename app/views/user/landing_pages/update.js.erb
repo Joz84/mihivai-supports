@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newLandingPageForm = document.getElementById('new_landing_page');
+  newLandingPageForm.innerHTML = innerHTML;
+}
+
+function updateLandingPage(landingPageHTML) {
+  document.getElementById('landing-page-<%= @landing_page.id %>').remove();
+  const landing_pages = document.getElementById('landing_pages');
+  landing_pages.insertAdjacentHTML('afterBegin', landingPageHTML);
+}
+
+updateLandingPage('<%= j render "landing_pages/landing_page", page: @landing_page %>');
+refreshForm('<%= j render "form", landing_page: LandingPage.new, url: user_landing_pages_path %>');
+$('html,body').animate({scrollTop: $("#display_landing_pages").offset().top}, 'slow');
+
+uploadImages();
