@@ -1,6 +1,6 @@
 class Admin::ProjectsController < ApplicationController
   def index
-    redirect_to root_path unless current_user.admin
+    redirect_to lab_path unless current_user.admin
     if params[:search].nil? || search_params[:promotion_id].empty?
       @promotion = nil
       @projects = Project.all
