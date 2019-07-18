@@ -3,28 +3,51 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>MHV - Support</title>
+    <title>Mihivai - Développement WEb</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= favicon_link_tag 'logo.png' %>
     <meta name="description" content="description">
     <meta name="image" content="logo.png">
+
+
+    <!-- <title><%#= meta_title %></title>
+    <meta name="description" content="<%#= meta_description %>"> -->
+    <!-- Facebook Open Graph data -->
+    <!-- <meta property="og:title" content="<%#= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%#= request.original_url %>" />
+    <meta property="og:image" content="<%#= meta_image %>" />
+    <meta property="og:description" content="<%#= meta_description %>" />
+    <meta property="og:site_name" content="<%#= meta_title %>" /> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <% unless params[:controller] == "pages" && params[:action] == "home" %>
+    <% unless params[:controller] == "pages" %>
       <div class="main-layout">
           <div class="color gradient"></div>
           <div class="color memphis"></div>
       </div>
     <% end %>
     <%= yield %>
+    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= yield(:after_js) %>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script>
+
+    </script>
+    <script type="text/javascript">
+
+    </script>
   </body>
 </html>

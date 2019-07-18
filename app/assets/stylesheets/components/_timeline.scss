@@ -1,0 +1,288 @@
+
+.wrapper-blue {
+  background-color: #dcfdfa;
+  padding: 40px 0;
+}
+
+.timeline {
+  position: relative;
+  width: 660px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 1em 0;
+  list-style-type: none;
+}
+
+.timeline:before {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  content: ' ';
+  display: block;
+  width: 3px;
+  height: 100%;
+  background: #86F1E6;
+
+}
+
+.timeline li {
+  padding: 1em 0;
+}
+
+.timeline li:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.direction-l {
+  position: relative;
+  width: 300px;
+  float: left;
+  text-align: right;
+}
+
+.direction-r {
+  position: relative;
+  width: 300px;
+  float: right;
+}
+
+.flag-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.flag {
+  position: relative;
+  display: inline;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-family: 'Chivo', sans-serif;
+  font-weight: 700;
+  text-align: left;
+  font-size: 26px;
+
+}
+
+
+
+.direction-l .flag:before,
+.direction-r .flag:before {
+  position: absolute;
+  top: 150%;
+  right: -47px;
+  content: ' ';
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-top: -10px;
+  background: #d1f7f2;
+  border-radius: 20px;
+  border: 9px solid #86F1E6;
+  z-index: 10;
+}
+
+.direction-r .flag:before {
+  left: -43px;
+}
+
+.direction-l .flag:after {
+
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  height: 0;
+  width: 0;
+  margin-top: -8px;
+  border: solid transparent;
+  border-left-color: rgb(248,248,248);
+  border-width: 8px;
+  pointer-events: none;
+}
+
+.direction-r .flag:after {
+
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  height: 0;
+  width: 0;
+  margin-top: -8px;
+  border: solid transparent;
+  border-right-color: rgb(248,248,248);
+  border-width: 8px;
+  pointer-events: none;
+}
+
+.time-wrapper {
+  display: inline;
+
+  line-height: 1em;
+  font-size: 0.66666em;
+  color: #d1f7f2;
+  vertical-align: middle;
+}
+
+.direction-l .time-wrapper {
+  float: left;
+}
+
+.direction-r .time-wrapper {
+  float: right;
+}
+
+.time {
+  display: inline-block;
+  padding: 4px 6px;
+  background: rgb(248,248,248);
+}
+
+.desc {
+  margin: 1em 0.75em 0 0;
+  font-size: 1.2em;
+  line-height: 1.3em;
+  height: 150px;
+
+}
+
+.direction-r .desc {
+  margin: 1em 0 0 0.75em;
+}
+
+/* ================ Timeline Media Queries ================ */
+
+@media screen and (max-width: 660px) {
+
+    .timeline {
+      width: 100%;
+      padding: 0 0 1em 0;
+      }
+
+    .timeline li {
+      padding: 1.4em 0;
+      }
+
+    .direction-l,
+    .direction-r {
+      float: none;
+      width: 100%;
+
+      text-align: center;
+      }
+
+    .flag-wrapper {
+      text-align: center;
+      }
+
+    .flag {
+      background: #dcfdfa;
+      z-index: 15;
+      font-size: 18px;
+      }
+
+    .direction-l .flag:before,
+    .direction-r .flag:before {
+      position: absolute;
+      top: -15px;
+      left: 53%;
+      content: ' ';
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin-left: -13px;
+      background: #d1f7f2;
+      border-radius: 20px;
+      border: 6px solid #86F1E6;
+      z-index: 10;
+      }
+
+    .direction-l .flag:after,
+    .direction-r .flag:after {
+
+      position: absolute;
+      left: 50%;
+      top: -76px;
+      height: 0;
+      width: 0;
+      margin-left: -8px;
+      border: solid transparent;
+      border-bottom-color:  #d1f7f2;
+      border-width: 8px;
+      pointer-events: none;
+      }
+
+    .time-wrapper {
+      display: block;
+      position: relative;
+      margin: 4px 0 0 0;
+      z-index: 14;
+      }
+
+    .direction-l .time-wrapper {
+      float: none;
+      }
+
+    .direction-r .time-wrapper {
+      float: none;
+      }
+
+
+
+    .direction-l .desc,
+    .direction-r .desc {
+      position: relative;
+      margin: 1em 1em 0 1em;
+      padding: 1em;
+      z-index: 15;
+      }
+
+
+
+    .direction-l .desc,
+    .direction-r .desc {
+      margin: 0 10em;
+      padding: 0;
+
+
+      }
+
+    .wrapper-blue {
+      background-color: #dcfdfa;
+      padding: 15px 0;
+      }
+
+    .subtitle {
+        font-size: 18px;
+        margin: 15px;
+        margin-bottom: 40px;
+
+      }
+
+    .timeline:before {
+      height: 60%;
+      width: 0;
+
+      }
+
+      .desc {
+      position: relative;
+      margin: 0;
+      height: 70px;
+      background: #dcfdfa;
+      z-index: 15;
+      font-size: 10px;
+      padding: 0;
+
+      }
+
+      .flag {
+      position: relative;
+      display: inline;
+      padding: 6px 0;
+
+  }
+}

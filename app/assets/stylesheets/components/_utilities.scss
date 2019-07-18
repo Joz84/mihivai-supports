@@ -1,0 +1,208 @@
+.page-min-height {
+  min-height: calc(100vh - 170px)
+}
+
+
+body {
+  font-family: 'Chivo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+
+
+
+.wrapper:nth-child(2n) {
+
+  background-color: #FAF8F8;
+
+}
+
+.wrapper {
+  position: relative;
+  padding: 80px 0;
+  min-height: 100vh;
+
+}
+
+.framer-content {
+
+  box-sizing: content-box;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 400px;
+  max-width: 1024px;
+  padding: 0;
+  width: 60%;
+
+}
+
+
+
+.framer-content h2 {
+  max-width: 500px;
+  margin: auto;
+  font-weight: 700;
+  text-align: center;
+  font-size: 30px;
+  padding: 0;
+
+}
+
+.framer-content h4 {
+  max-width: 500px;
+  margin: 30px auto;
+  color: #b9b9b9;
+  text-align: center;
+  font-size: 18px;
+  padding: 0;
+
+}
+
+h5 {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+
+}
+
+.position-absolute {
+  position: absolute;
+  z-index: -1;
+
+}
+
+.scene-team {
+  top: 100px;
+  left: -20px;
+  height: 500px;
+
+}
+
+.scene-team-cloud {
+  top: 300px;
+  right: 0;
+  height: 150px;
+
+}
+
+.scene-window {
+    top: -123px;
+    left: -132px;
+    height: 451px;
+    z-index: 10;
+}
+
+.scene-persona {
+    top: 100px;
+    right: 30px;
+    height: 600px;
+    z-index: 10;
+}
+
+.scene-students {
+  top: 170px;
+  left: -100px;
+  height: 470px;
+}
+
+.scene-teacher {
+  top: -50px;
+  right: 0;
+  height: 570px;
+}
+
+.scene-robot {
+  top: -200px;
+  left: -40px;
+  height: 700px;
+  z-index: 10;
+}
+
+.scene-scientist {
+  top: 50px;
+  right: -20px;
+  height: 470px;
+  z-index: 10;
+}
+
+.frenchtech {
+  top: 0;
+  left: 0;
+  height: 200px;
+}
+
+.txt-sky {
+  color: #03e0ca;
+}
+
+.subtitle {
+  text-align: center;
+  margin: 50px 0;
+  color: #03e0ca;
+}
+
+.txt-grey {
+  color: #b9b9b9;
+}
+
+.reveal-loaded .reveal [class*="reveal-"] {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.reveal-loaded [class*="reveal"]{
+    transition: .8s cubic-bezier(.5, 0, 0, 1);
+}
+
+/* On ajoute du délai */
+.reveal-loaded .reveal-2 {
+    transition-delay: .1s;
+}
+
+.reveal-loaded .reveal-3 {
+    transition-delay: .2s;
+}
+
+.reveal-loaded .reveal-4 {
+    transition-delay: .3s;
+}
+
+
+
+@media (max-width: 991px) {
+  .framer-content {
+    margin-bottom: 60px;
+  }
+
+}
+@media (max-width: 767px) {
+  .framer-content {
+    margin-bottom: 40px;
+    width: 90%;
+  }
+
+  .framer-content h2 {
+    font-size: 26px;
+  }
+
+  .framer-content h4 {
+    font-size: 16px;
+    margin: 15px auto;
+  }
+
+  .framer-content h5 {
+    font-size: 12px;
+
+  }
+
+  .wrapper {
+
+  padding: 0;
+
+
+}
+}
+
+
+

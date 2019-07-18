@@ -1,22 +1,68 @@
-<div id="navbar" class="d-flex justify-content-between align-items-center px-4 py-2 border-bottom">
-  <%= link_to (image_tag "logo.png", height: 50), root_path %>
+<!-- <div id="navbar" class="d-flex justify-content-between align-items-center px-4 py-2 border-bottom">
+  <%#= link_to (image_tag "logo.png", height: 50), root_path %>
 
-  <% if params[:controller] == 'courses' && params[:action] == 'show' %>
-    <%= link_to "Retour aux cours", courses_path %>
-  <% elsif params[:controller] == 'user/projects' && (params[:action] == 'edit' || params[:action] == 'show') %>
-    <%= link_to "Retour aux projets", user_projects_path %>
-  <% elsif params[:controller] == 'user/landing_pages' && (params[:action] == 'edit' || params[:action] == 'show') %>
-    <%= link_to "Retour aux pages", user_landing_pages_path %>
-  <% elsif params[:controller] == "pages" && params[:action] == "home"%>
-  <% end %>
+  <%# if params[:controller] == 'courses' && params[:action] == 'show' %>
+    <%#= link_to "Retour aux cours", courses_path %>
+  <%# elsif params[:controller] == 'user/projects' && (params[:action] == 'edit' || params[:action] == 'show') %>
+    <%#= link_to "Retour aux projets", user_projects_path %>
+  <%# elsif params[:controller] == 'user/landing_pages' && (params[:action] == 'edit' || params[:action] == 'show') %>
+    <%#= link_to "Retour aux pages", user_landing_pages_path %>
+  <%# elsif params[:controller] == "pages" && params[:action] == "home"%>
+  <%# end %>
 
-  <% if user_signed_in? %>
-    <%= link_to t(".sign_out", default: "Déconnexion"), destroy_user_session_path, method: :delete  %>
-  <% else %>
+  <%# if user_signed_in? %>
+    <%#= link_to t(".sign_out", default: "Déconnexion"), destroy_user_session_path, method: :delete  %>
+  <%# else %>
     <div class="d-flex justify-content-around m-0">
-      <%= link_to t(".sign_up", default: "Créer mon compte"), new_user_registration_path, class:"mx-3"  %>
-      <%= link_to t(".sign_in", default: "Me connecter"), new_user_session_path, class:"mx-3"  %>
+      <%#= link_to t(".sign_up", default: "Créer mon compte"), new_user_registration_path, class:"mx-3"  %>
+      <%#= link_to t(".sign_in", default: "Me connecter"), new_user_session_path, class:"mx-3"  %>
     </div>
-  <% end %>
+  <%# end %>
 
 </div>
+ -->
+
+ <div class="navbar-mihivai">
+  <!-- Logo -->
+    <a href="./">
+
+      <%= image_tag 'logo_mhv.svg' %>
+
+    </a>
+
+    <div class="d-none d-md-block">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+        <p class="navbar-mihivai-item
+          navbar-mihivai-contact">+ 33 6 18 23 73 31</p>
+        </div>
+        <a href="#team" class="navbar-mihivai-item navbar-mihivai-link">ÉQUIPE</a>
+        <a href="#projects" class="navbar-mihivai-item navbar-mihivai-link">PROJETS</a>
+        <a href="#teaching" class="navbar-mihivai-item navbar-mihivai-link">FORMATION</a>
+        <a href="lab.html" class="navbar-mihivai-item navbar-mihivai-link button-lab">LAB</a>
+      </div>
+    </div>
+
+    <div class="d-block d-md-none">
+      <div class="navbar-dropdown">
+        <input id="toggle" type="checkbox"/>
+        <label class="hamburger" for="toggle">
+          <div class="top"></div>
+          <div class="meat"></div>
+          <div class="bottom"></div>
+        </label>
+
+          <div class="nav">
+            <div class="nav-wrapper">
+              <nav class= "d-flex flex-column">
+                <a href="file:///Users/derevel/code/constancederevel/mihivai.github.io/index-new.html" class="navbar-link">Accueil</a>
+                <a href="#team" class="navbar-link">Équipe</a>
+                <a href="#projects" class="navbar-link">Projets</a>
+                <a href="#teaching" class="navbar-link">Formation</a>
+                <a href="#teaching" class="navbar-link">Lab</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

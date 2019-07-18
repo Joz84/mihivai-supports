@@ -1,9 +1,21 @@
-// Import your components CSS files here.
 @import "alert";
+@import 'utilities';
+@import 'navbar';
+@import 'footer';
+@import 'banner';
+@import 'team';
+@import 'projects';
+@import 'timeline';
+@import 'counter';
+@import 'contact';
+@import 'teaching';
 @import "buttons";
 @import "circle_home";
 @import "cloud";
-@import "gradient";
+@import "contact";
+@import "counter";
 @import "elements";
-@import "upload_images";
+@import "gradient";
 @import "search_prom";
+@import "teaching";
+@import "upload_images";
