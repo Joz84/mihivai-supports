@@ -4,6 +4,15 @@
   <div class="home-container">
     <div class="color gradient"></div>
     <h1 class="container display-3 mt-5 mb-1">MHV Support</h1>
+    <% if user_signed_in? %>
+      <%= link_to t(".sign_out", default: "Déconnexion"), destroy_user_session_path, class: "small-btn", method: :delete  %>
+    <% else %>
+      <div class="d-flex justify-content-around m-0">
+        <%= link_to t(".sign_up", default: "Créer mon compte"), new_user_registration_path, class:"mx-3 small-btn"  %>
+        <%= link_to t(".sign_in", default: "Me connecter"), new_user_session_path, class:"mx-3 small-btn"  %>
+      </div>
+    <% end %>
+
     <div class="d-flex w-75 flex-column justify-content-start mx-auto">
       <p class="my-5"><span> Tous les cours, projets et vos réalisations disponibles ici.</span></p>
     </div>

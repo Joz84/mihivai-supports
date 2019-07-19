@@ -271,3 +271,11 @@ nav a:first-child {
 
 
   }
+
+
+.navbar-height {
+  height: 166px;
+  @media (max-width:991px) {
+    height:70px;
+  }
+}
