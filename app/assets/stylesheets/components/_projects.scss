@@ -229,26 +229,19 @@ img.test {
   height: 30px;
   padding: 0 10px 0 0;
 
-}
-
-@media (max-width: 991px) {
-  img.test {
-  width: auto;
-  height: 20px;
-  padding: 0 12px 0 0;
-  }
 
 }
-
-/*à supprimer */
 
 @media (max-width: 767px) {
   img.test {
   width: auto;
-  height: 25px;
-  padding: 0 20px 0 0;
-  }
+  height: 13px;
+  padding: 0 3px 0 0;
+
 
 }
+}
+
+
 
 
