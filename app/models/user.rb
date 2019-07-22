@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   validates :promotion, presence: true
 
+  validates :conditions_validation, inclusion: { in: [true] }
+
   def name
     return email if first_name.nil? || last_name.nil?
     "#{first_name.capitalize} #{last_name.capitalize}"

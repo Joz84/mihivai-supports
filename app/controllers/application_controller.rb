@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
       :group,
       :description,
       :site,
-      :linkedin
+      :linkedin,
+      :conditions_validation
     ]
 
     devise_parameter_sanitizer.permit(:sign_up, keys: user_data)
