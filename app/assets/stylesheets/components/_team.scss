@@ -2,14 +2,15 @@
 
 .team-frame {
   margin: 0 auto;
-
   margin-bottom: 60px;
   width: 80%
 }
 
 .team-frame img {
-  width: 150px;
+  width: 200px;
   margin-bottom: 40px;
+  margin-right: 30px;
+  border-radius: 100px;
 
 }
 
@@ -46,6 +47,7 @@
   .team-frame img {
     width: 150px;
     margin: 30px 0;
+    border-radius: 80px;
 
   }
 

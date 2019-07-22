@@ -1,4 +1,4 @@
-const threshold = .1
+     const threshold = .1
       const options = {
         root: null,
         rootMargin: '0px',
@@ -16,7 +16,10 @@ const threshold = .1
 
       const increaseCounter = function (entries, observer) {
         entries.forEach(function (entry) {
-          if (entry.intersectionRatio > threshold) {
+
+
+          if (entry.intersectionRatio > threshold)  {
+
             var i=708;
             var timer = setInterval(function(){
             document.querySelector("#counter").textContent = i++;

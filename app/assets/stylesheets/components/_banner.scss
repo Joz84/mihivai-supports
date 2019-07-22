@@ -13,10 +13,10 @@
 
 .logo-banner {
   margin: auto;
-  width: 25%;
-  min-width: 200px;
+  width: 30%;
+  min-width: 300px;
   height: auto;
-  margin-top: 160px;
+  margin-top: 150px;
 
 }
 
@@ -37,74 +37,55 @@
 
 .item-banner-absolute {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   left: 40px;
 
 }
 
-.item-banner-absolute-responsive {
-  position: absolute;
-  top: 220px;
-  left: -40px;
-}
-
-.item-section-responsive {
-  margin: 50px 100px;
-
-}
-
-.item-flex {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-
-}
-
-.item-margin {
-  margin-right: 10vw;
-
-}
 
  @media (max-width: 767px) {
 
     .banner {
       height: 50vh;
+
+    }
+
+    .item-box {
+      max-width: 110px;
+
+
     }
 
     .logo-banner {
-      margin-top: 100px;
 
-    }
+      width: 25%;
+      min-width: 150px;
+      height: auto;
+      margin-top: 80px;
 
-    .item-section-responsive {
-      display: block;
-      margin: 0;
-
-    }
-
-    .item-banner-absolute-responsive {
-      position: absolute;
-      top: 300px;
-      left: 50px;
-    }
+      }
 
     .item-title {
-      font-size: 12px;
+      font-size: 14px;
       margin-bottom: 10px;
       text-align: left;
       margin-top: 0;
+      margin-left: 20px;
     }
 
-    .item-flex {
-      flex-wrap: nowrap;
-    }
-
-    .item-margin {
-      margin-right: 30px;
-    }
 
     .item-text {
       font-size: 12px;
     }
+
+    .item-banner-absolute {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+
+    }
+
+
+
   }
 
