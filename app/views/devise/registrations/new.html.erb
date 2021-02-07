@@ -1,31 +1,28 @@
-<h2>Sign up</h2>
+<h2 class="text-center text-white my-2">Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-
-        <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
-          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: "Mot de passe" %>
-          <%= f.input :password_confirmation, required: true, label: "Confirmation du mot de passe" %>
-          <%= f.input :promotion_id, collection: Promotion.all, label: "Classe" %>
-          <%#= f.input :group %>
-          <%#= f.input :description %>
-          <%= f.input :first_name, label: "Prénom" %>
-          <%= f.input :last_name, label: "Nom" %>
-          <%#= f.input :site %>
-          <%#= f.input :linkedin %>
-        </div>
-
-        <div class="form-actions">
+  <div class="mx-auto">
+    <div class="container-fluid p-3 m-4 rounded project-form-container h-100 w-50 mx-auto">
+      <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: "Mot de passe" %>
+      <%= f.input :password_confirmation, required: true, label: "Confirmation du mot de passe" %>
+      <%= f.input :promotion_id, collection: Promotion.all, label: "Classe" %>
+      <%#= f.input :group %>
+      <%#= f.input :description %>
+      <%= f.input :first_name, label: "Prénom" %>
+      <%= f.input :last_name, label: "Nom" %>
+      <%#= f.input :site %>
+      <%#= f.input :linkedin %>
+      <div class="text-center d-flex w-100 justify-content-center align-items-center">
+        <div class="normal-btn">
           <%= f.button :submit, "S'inscrire" %>
         </div>
-        <%= render "devise/shared/links" %>
+        <div class="form-group ml-3 my-0">
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
   </div>
 <% end %>
-
